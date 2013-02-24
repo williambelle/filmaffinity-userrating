@@ -1,18 +1,19 @@
 FilmAffinity-UserRating
 =======================
 
-FilmAffinity::UserRating - Perl interface to FilmAffinity
+Perl interface to FilmAffinity
 
 Synopsis
 --------
 
 Get filmaffinity voted movies from a user
 
-    use FilmAffinity::UserRating;
+```perl
+use FilmAffinity::UserRating;
 
-    my $parser = FilmAffinity::UserRating->new( userID => '123456' );
-    
-    my $ref_movies = $parser->parse();
+my $parser = FilmAffinity::UserRating->new( userID => '123456' );
+my $ref_movies = $parser->parse();
+```
     
 Via the command-line program
 
@@ -38,17 +39,17 @@ perldoc command.
 
 You can also look for information at:
 
-    RT, CPAN's request tracker (report bugs here)
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=FilmAffinity-UserRating
+* RT, CPAN's request tracker (report bugs here)
+  http://rt.cpan.org/NoAuth/Bugs.html?Dist=FilmAffinity-UserRating
 
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/FilmAffinity-UserRating
+* AnnoCPAN, Annotated CPAN documentation
+  http://annocpan.org/dist/FilmAffinity-UserRating
 
-    CPAN Ratings
-        http://cpanratings.perl.org/d/FilmAffinity-UserRating
+* CPAN Ratings
+  http://cpanratings.perl.org/d/FilmAffinity-UserRating
 
-    Search CPAN
-        http://search.cpan.org/dist/FilmAffinity-UserRating/
+* Search CPAN
+  http://search.cpan.org/dist/FilmAffinity-UserRating/
 
 
 Licence and Copyright
