@@ -11,3 +11,10 @@ cover_db
 pod2htm*.tmp
 FilmAffinity-UserRating-*
 /MANIFEST
+/Makefile.PL
+/MANIFEST.bak
+/MANIFEST.SKIP.bak
+/META.json
+/META.yml
+/MYMETA.json
+/MYMETA.yml
