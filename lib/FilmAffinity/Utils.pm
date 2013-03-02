@@ -7,6 +7,10 @@ use warnings;
 
 Utils for FilmAffinity
 
+=head1 VERSION
+
+Version 0.01
+
 =cut
 
 require Exporter;
