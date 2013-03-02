@@ -31,4 +31,4 @@ my $rating = $ref_movies->{267002}->{rating};
 is($title, 'Watchmen', 'same title');
 is($rating, 9, 'same rating');
 
-is($ref_movies->{575554}->{title}, '[*REC]', '')
+is($ref_movies->{575554}->{title}, '[*REC]', 'check demoronization')

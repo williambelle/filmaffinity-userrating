@@ -14,11 +14,9 @@ my $string = [
   { string => '‹Test›',             expected => '<Test>'},
   { string => '‚SINGLE„DOUBLE',     expected => ',SINGLE,,DOUBLE' },
   { string => 'ˆcircum',            expected => '^circum' },
-  { string => 'perl–style',         expected => 'perl-style'},
-  { string => 'perl—style',         expected => 'perl-style'},
-  
+  { string => 'perl–style',         expected => 'perl-style'},    #EN DASH
+  { string => 'another—style',      expected => 'another-style'}, #EM DASH
 ];
-
 
 foreach my $t (@{$string}){
   is(demoronize(decode('utf-8', $t->{string})), $t->{expected}, 'demoronisation');
