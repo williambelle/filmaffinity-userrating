@@ -124,14 +124,9 @@ my $RATING_URL = 'http://www.filmaffinity.com/en/userratings.php?orderby=2&';
 
 sub BUILD {
   my ($self, $args) = @_;
-  
-  my $delay = $args->{delay} || 5;
-  
-  $self->ua( LWP::RobotUA->new("FilmAffinity-Bot/$VERSION", 'me@foo.com') );
-  $self->ua->timeout(60);
-  $self->ua->env_proxy;  
-  $self->ua->delay($delay/60);
-}
+
+  $self->ua( buildRobot( $args->{delay} || 5 ) );
+} 
    
 =head1 METHODS   
       
