@@ -25,20 +25,26 @@ Version 0.01
 
 our $VERSION = 0.01;
 
-our %FIELD = (
-#  'OFFICIAL WEB'    => 'website',  
-  'ORIGINAL TITLE'  => 'title', 
-  'YEAR'            => 'year',
-#  'CAST'            => 'cast',
-#  'RUNNING TIME'    => 'duration',
-#  'SYNOPSIS/PLOT'   => 'synopsis',
-#  'GENRE'           => 'genre',
-#  'STUDIO/PRODUCER' => 'studio',
-#  'COMPOSER'        => 'composer',
-#  'DIRECTOR'        => 'director',
-#  'SCREENWRITER'    => 'screenwriter',
-#  'CINEMATOGRAPHER' => 'cinematographer',
-);
+my $FIELD = [
+  { accessor => 'title'       , faTag => 'ORIGINAL TITLE', },
+  { accessor => 'year'        , faTag => 'YEAR', },
+  { accessor => 'synopsis'    , faTag => 'SYNOPSIS/PLOT', },
+  { accessor => 'website'     , faTag => 'OFFICIAL WEB', },
+   
+  { accessor => 'duration'    , faTag => 'RUNNING TIME', cleanerSub => \&p_cleanDuration },
+  { accessor => 'cast'        , faTag => 'CAST',         cleanerSub => \&p_cleanPerson },
+  { accessor => 'director'    , faTag => 'DIRECTOR',     cleanerSub => \&p_cleanPerson },
+  { accessor => 'composer'    , faTag => 'COMPOSER',     cleanerSub => \&p_cleanPerson },
+  
+  { accessor => 'screenwriter'   , faTag => 'SCREENWRITER',    cleanerSub => \&p_cleanPerson },
+  { accessor => 'cinematographer', faTag => 'CINEMATOGRAPHER', cleanerSub => \&p_cleanPerson },
+  
+  { accessor => 'genre' , faTag => 'GENRE', cleanerSub => \&p_cleanGenre },
+  { accessor => 'topic' , faTag => 'GENRE', cleanerSub => \&p_cleanGenre },
+  
+  { accessor => 'studio'   , faTag => 'STUDIO/PRODUCER', cleanerSub => \&p_cleanStudio },
+  { accessor => 'producer' , faTag => 'STUDIO/PRODUCER', cleanerSub => \&p_cleanStudio },
+];
 
 =head1 ACCESSORS
 
@@ -52,22 +58,26 @@ get title
 
 =cut
 
-has id       => ( is  => 'ro',  isa  => 'Int', required => 1, );
-has title    => ( is  => 'rw',  isa  => 'Str', );
-has year     => ( is  => 'rw',  isa  => 'Int', );
+has id       => ( is => 'ro', isa => 'Int', required => 1, );
+has title    => ( is => 'rw', isa => 'Str', );
+has year     => ( is => 'rw', isa => 'Int', );
+has duration => ( is => 'rw', isa => 'Int', );
+has synopsis => ( is => 'rw', isa => 'Str', );
+has website  => ( is => 'rw', isa => 'Str', );
 
-#has website  => ( is  => 'rw',  isa  => 'Str', );
-#has duration => ( is  => 'rw',  isa  => 'Int', );
-#has cast     => ( is  => 'rw',  );
-#has genre    => ( is  => 'rw',  );
-#has studio   => ( is  => 'rw',  );
-#has synopsis => ( is  => 'rw',  isa  => 'Str', );
-#has topic           => ( is  => 'rw',  );
-#has producer        => ( is  => 'rw',  );
-#has director        => ( is  => 'rw',  );
-#has composer        => ( is  => 'rw', );
-#has screenwriter    => ( is  => 'rw', );
-#has cinematographer => ( is  => 'rw', );
+has genre => ( is => 'rw', isa => 'ArrayRef[Str]', );
+has topic => ( is => 'rw', isa => 'ArrayRef[Str]', );
+
+has cast     => ( is => 'rw', isa => 'ArrayRef[Str]', );
+has director => ( is => 'rw', isa => 'ArrayRef[Str]', );
+has composer => ( is => 'rw', isa => 'ArrayRef[Str]', );
+
+has screenwriter    => ( is => 'rw', isa => 'ArrayRef[Str]', );
+has cinematographer => ( is => 'rw', isa => 'ArrayRef[Str]', );
+
+has studio   => ( is => 'rw', isa => 'ArrayRef[Str]', );
+has producer => ( is => 'rw',  );
+
 
 has tree => ( 
   is      => 'rw',
@@ -115,8 +125,8 @@ sub parsePage {
   
   $self->tree->parse($content);
 
-  foreach my $field (keys %FIELD){
-    $self->p_findField($field);
+  foreach my $data (@{$FIELD}){
+    $self->p_findField($data);
   }  
 
   $self->tree->delete();
@@ -134,11 +144,11 @@ sub parse {
 }
  
 private_method p_findField => sub {
-  my ( $self, $field ) = @_;
+  my ( $self, $data ) = @_;
   
   my @nodes = $self->tree->findnodes( '//td/b' );
   foreach my $node (@nodes){
-    if ( trim( $node->as_text() ) eq $field ){
+    if ( trim( $node->as_text() ) eq $data->{faTag} ){
       
       my $searched_node = $node->parent()->right();
       
@@ -148,8 +158,15 @@ private_method p_findField => sub {
         sub { $_[0]->as_HTML() !~ m/table/ }
       );
       
-      my $accessor = $FIELD{$field};
-      $self->$accessor( trim( demoronize( $td->as_text() ) ) );
+      my $accessor = $data->{accessor};
+      
+      my $value = trim( demoronize( $td->as_text() ) );
+
+      if (defined $data->{cleanerSub}){
+        $value = $data->{cleanerSub}($value, $accessor);
+      }
+      
+      $self->$accessor( $value );
       last;
     }
   }
@@ -159,6 +176,51 @@ private_method p_buildUrlMovie => sub {
   my ($self, $id) = @_;
     
   return $MOVIE_URL.$id.'.html';
+};
+
+private_method p_removeTextBetweenParenthesis => sub {
+  my $content = shift;
+  
+  $content =~ s/\(.*\)//g;
+  return $content;
+};
+
+private_method p_cleanDuration => sub {
+  my $value = shift;
+  $value =~ s/min\.//gi;
+  return trim($value);
+};
+
+private_method p_cleanPerson => sub {
+  my $value = shift;
+     
+  my @persons = split(',', $value);
+  @persons = map (trim (p_removeTextBetweenParenthesis($_) ), @persons);
+  return \@persons;
+};
+
+private_method p_cleanGenre => sub {
+  my ($value, $field) = @_;
+  
+  my $pos = $field eq 'genre' ? 0 : 1;
+  my @list = split(/\|/, $value);   
+  my @genres = trim ( split(/\./, $list[$pos] ) );
+  return \@genres;
+};
+
+private_method p_cleanStudio => sub {
+  my ($value, $field) = @_;
+  
+  my $pos = $field eq 'studio' ? 0 : 1;
+  my @list = split(/\. Producer: /, $value);
+  
+  my @studio = ();
+  if (not defined $list[$pos]){
+    return undef;
+  } else {
+    @studio = trim ( split(/\//, $list[$pos] ) );
+    return \@studio;  
+  } 
 };
 
 =head1 AUTHOR

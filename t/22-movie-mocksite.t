@@ -11,7 +11,7 @@ use File::Find::Rule;
 use FilmAffinity::Movie;
 
 use Test::MockObject::Extends;
-use Test::More tests => 4;
+use Test::More tests => 28;
 
 my @listMovies = File::Find::Rule->file()->name('*.html')->in(
   't/resources/filmaffinity-local-movie'
@@ -37,24 +37,22 @@ foreach my $movie (@listMovies){
   my $jsonContent < io('t/resources/json-movie/'.$id.'.json');
   my $jsonData = from_json( $jsonContent );
   
-  is($faMovie->title(), $jsonData->{title}, 'title'); 
-  is($faMovie->year(),  $jsonData->{year},  'year'); 
-}
- 
- __END__ 
+  is($faMovie->title(),    $jsonData->{title},    'title'); 
+  is($faMovie->year(),     $jsonData->{year},     'year'); 
+  is($faMovie->duration(), $jsonData->{duration}, 'duration'); 
+  is($faMovie->synopsis(), $jsonData->{synopsis}, 'synopsis');
+  is($faMovie->website(),  $jsonData->{website},  'website');
   
-is($faMovie->title(), 'The Matrix', 'same id');
-
-warn @{$faMovie->composer()};
-warn @{$faMovie->cast()};
-warn $faMovie->website();
-warn $faMovie->duration();
-warn $faMovie->year();
-warn @{$faMovie->genre()};
-warn @{$faMovie->topic()};
-warn @{$faMovie->studio()};
-warn $faMovie->synopsis();
-warn @{$faMovie->director()};
-warn @{$faMovie->screenwriter()};
-warn @{$faMovie->cinematographer()};
-warn $faMovie->producer();
+  is_deeply($faMovie->cast(),     $jsonData->{cast},     'cast');
+  is_deeply($faMovie->director(), $jsonData->{director}, 'director');
+  is_deeply($faMovie->composer(), $jsonData->{composer}, 'composer');
+  
+  is_deeply($faMovie->screenwriter(),    $jsonData->{screenwriter},    'screenwriter');
+  is_deeply($faMovie->cinematographer(), $jsonData->{cinematographer}, 'cinematographer');
+  
+  is_deeply($faMovie->genre(), $jsonData->{genre}, 'genre');
+  is_deeply($faMovie->topic(), $jsonData->{topic}, 'topic');
+  
+  is_deeply($faMovie->studio(),   $jsonData->{studio},   'studio');
+  is_deeply($faMovie->producer(), $jsonData->{producer}, 'producer');  
+}
