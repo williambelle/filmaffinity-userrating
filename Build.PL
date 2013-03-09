@@ -12,6 +12,7 @@ my $builder = Module::Build->new(
         'Test::More'       => 0,
         'File::Find::Rule' => 0,
         'Test::MockObject' => 0,
+        'Test::LongString' => 0,
     },
     requires => {
         'perl'                     => 5.006,
@@ -23,6 +24,7 @@ my $builder = Module::Build->new(
         'MooseX::Privacy'          => 0,
         'IO::All'                  => 0,
         'Encode'                   => 0,
+        'JSON'                     => 0,
     },
     add_to_cleanup      => [ 'FilmAffinity-UserRating-*' ],
     create_makefile_pl => 'traditional',

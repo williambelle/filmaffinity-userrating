@@ -3,6 +3,7 @@ package FilmAffinity::Movie;
 use strict;
 use warnings;
 
+use JSON;
 use Text::Trim;
 use LWP::RobotUA;
 use HTML::TreeBuilder;
@@ -46,6 +47,12 @@ my $FIELD = [
   { accessor => 'producer' , faTag => 'STUDIO/PRODUCER', cleanerSub => \&p_cleanStudio },
 ];
 
+our @JSON_FIELD = (
+  'id', 'title', 'year', 'synopsis', 'website', 'duration', 'cast' , 'director',
+  'composer', 'screenwriter', 'cinematographer', 'genre', 'topic', 'studio', 
+  'producer', 'country', 'cover'
+);
+
 =head1 ACCESSORS
 
 =head2 $movie->id
@@ -64,6 +71,8 @@ has year     => ( is => 'rw', isa => 'Int', );
 has duration => ( is => 'rw', isa => 'Int', );
 has synopsis => ( is => 'rw', isa => 'Str', );
 has website  => ( is => 'rw', isa => 'Str', );
+has country  => ( is => 'rw', isa => 'Str', );
+has cover    => ( is => 'rw', isa => 'Str', );
 
 has genre => ( is => 'rw', isa => 'ArrayRef[Str]', );
 has topic => ( is => 'rw', isa => 'ArrayRef[Str]', );
@@ -127,7 +136,8 @@ sub parsePage {
 
   foreach my $data (@{$FIELD}){
     $self->p_findField($data);
-  }  
+  }
+  $self->p_findCountryAndCover();  
 
   $self->tree->delete();
 }
@@ -141,6 +151,21 @@ sub parse {
   
   my $content = $self->getContent();
   $self->parsePage($content);
+}
+
+=head2 $movie->toJSON()
+
+=cut 
+
+sub toJSON {
+  my $self = shift;
+  
+  my %data;
+  foreach my $field (@JSON_FIELD){
+    $data{$field} = $self->$field() if defined $self->$field(); 
+  };
+  
+  return to_json(\%data, {utf8 => 1, pretty => 1});
 }
  
 private_method p_findField => sub {
@@ -169,6 +194,20 @@ private_method p_findField => sub {
       $self->$accessor( $value );
       last;
     }
+  }
+};
+
+private_method p_findCountryAndCover => sub {
+  my $self = shift;
+  
+  my @images =  $self->tree->findnodes( '//img' );
+  foreach my $image (@images){
+    if ($image->attr('src') =~ m{/imgs/countries/}){        
+      $self->country( $image->attr('title') );
+    }  
+    if ($image->attr('src') =~ m/pics\.filmaffinity\.com/){        
+      $self->cover( $image->attr('src') );
+    }  
   }
 };
 
