@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use JSON;
+use Encode;
 use Text::Trim;
 use LWP::RobotUA;
 use HTML::TreeBuilder;
@@ -25,33 +26,6 @@ Version 0.01
 =cut
 
 our $VERSION = 0.01;
-
-my $FIELD = [
-  { accessor => 'title'       , faTag => 'ORIGINAL TITLE', },
-  { accessor => 'year'        , faTag => 'YEAR', },
-  { accessor => 'synopsis'    , faTag => 'SYNOPSIS/PLOT', },
-  { accessor => 'website'     , faTag => 'OFFICIAL WEB', },
-   
-  { accessor => 'duration'    , faTag => 'RUNNING TIME', cleanerSub => \&p_cleanDuration },
-  { accessor => 'cast'        , faTag => 'CAST',         cleanerSub => \&p_cleanPerson },
-  { accessor => 'director'    , faTag => 'DIRECTOR',     cleanerSub => \&p_cleanPerson },
-  { accessor => 'composer'    , faTag => 'COMPOSER',     cleanerSub => \&p_cleanPerson },
-  
-  { accessor => 'screenwriter'   , faTag => 'SCREENWRITER',    cleanerSub => \&p_cleanPerson },
-  { accessor => 'cinematographer', faTag => 'CINEMATOGRAPHER', cleanerSub => \&p_cleanPerson },
-  
-  { accessor => 'genre' , faTag => 'GENRE', cleanerSub => \&p_cleanGenre },
-  { accessor => 'topic' , faTag => 'GENRE', cleanerSub => \&p_cleanGenre },
-  
-  { accessor => 'studio'   , faTag => 'STUDIO/PRODUCER', cleanerSub => \&p_cleanStudio },
-  { accessor => 'producer' , faTag => 'STUDIO/PRODUCER', cleanerSub => \&p_cleanStudio },
-];
-
-our @JSON_FIELD = (
-  'id', 'title', 'year', 'synopsis', 'website', 'duration', 'cast' , 'director',
-  'composer', 'screenwriter', 'cinematographer', 'genre', 'topic', 'studio', 
-  'producer', 'country', 'cover'
-);
 
 =head1 ACCESSORS
 
@@ -102,6 +76,81 @@ has ua => (
 
 my $MOVIE_URL = 'http://www.filmaffinity.com/en/film';
 
+my @JSON_FIELD = (
+  'id', 'title', 'year', 'synopsis', 'website', 'duration', 'cast' , 'director',
+  'composer', 'screenwriter', 'cinematographer', 'genre', 'topic', 'studio', 
+  'producer', 'country', 'cover',
+);
+
+my $FIELD = [
+  { 
+    accessor => 'title', 
+    faTag    => 'ORIGINAL TITLE', 
+  },
+  { 
+    accessor => 'year', 
+    faTag    => 'YEAR', 
+  },
+  { 
+    accessor => 'synopsis', 
+    faTag    => 'SYNOPSIS/PLOT', 
+  },
+  { 
+    accessor => 'website', 
+    faTag    => 'OFFICIAL WEB', 
+  },  
+  {
+    accessor   => 'duration', 
+    faTag      => 'RUNNING TIME', 
+    cleanerSub => \&p_cleanDuration, 
+  },
+  { 
+    accessor   => 'cast', 
+    faTag      => 'CAST', 
+    cleanerSub => \&p_cleanPerson, 
+  },
+  { 
+    accessor   => 'director', 
+    faTag      => 'DIRECTOR',     
+    cleanerSub => \&p_cleanPerson,
+  },
+  { 
+    accessor   => 'composer', 
+    faTag      => 'COMPOSER',     
+    cleanerSub => \&p_cleanPerson,
+  },  
+  { 
+    accessor   => 'screenwriter', 
+    faTag      => 'SCREENWRITER',    
+    cleanerSub => \&p_cleanPerson,
+  },
+  { 
+    accessor   => 'cinematographer', 
+    faTag      => 'CINEMATOGRAPHER', 
+    cleanerSub => \&p_cleanPerson,
+  },
+  { 
+    accessor   => 'genre', 
+    faTag      => 'GENRE', 
+    cleanerSub => \&p_cleanGenre, 
+  },
+  { 
+    accessor   => 'topic', 
+    faTag      => 'GENRE', 
+    cleanerSub => \&p_cleanGenre, 
+  }, 
+  { 
+    accessor   => 'studio', 
+    faTag      => 'STUDIO/PRODUCER', 
+    cleanerSub => \&p_cleanStudio,
+  },
+  { 
+    accessor   => 'producer' , 
+    faTag      => 'STUDIO/PRODUCER', 
+    cleanerSub => \&p_cleanStudio, 
+  },
+];
+
 sub BUILD {
   my ($self, $args) = @_;
  
@@ -132,6 +181,7 @@ sub getContent {
 sub parsePage {
   my ($self, $content) = @_;
   
+  $content = decode('cp1252', $content);
   $self->tree->parse($content);
 
   foreach my $data (@{$FIELD}){
@@ -165,7 +215,7 @@ sub toJSON {
     $data{$field} = $self->$field() if defined $self->$field(); 
   };
   
-  return to_json(\%data, {utf8 => 1, pretty => 1});
+  return to_json(\%data, {pretty => 1});
 }
  
 private_method p_findField => sub {
@@ -176,16 +226,17 @@ private_method p_findField => sub {
     if ( trim( $node->as_text() ) eq $data->{faTag} ){
       
       my $searched_node = $node->parent()->right();
-      
       my $td = $searched_node->look_down( 
         _tag  => 'td', 
         align => undef,
-        sub { $_[0]->as_HTML() !~ m/table/ }
+        sub { $_[0]->as_HTML() !~ m/<table(.*)>/ }
       );
       
       my $accessor = $data->{accessor};
-      
+
       my $value = trim( demoronize( $td->as_text() ) );
+      
+      next if $value eq '';
 
       if (defined $data->{cleanerSub}){
         $value = $data->{cleanerSub}($value, $accessor);
@@ -257,7 +308,7 @@ private_method p_cleanStudio => sub {
   if (not defined $list[$pos]){
     return undef;
   } else {
-    @studio = trim ( split(/\//, $list[$pos] ) );
+    @studio = trim ( split(/ \/ /, $list[$pos] ) );
     return \@studio;  
   } 
 };
