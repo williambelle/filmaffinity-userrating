@@ -37,7 +37,7 @@ Get filmaffinity voted movies from a user
     
     my $ref_movies = $parser->parse();
     
-Via the command-line program L<filmaffinity-get-ratings.pl>:
+Via the command-line program filmaffinity-get-ratings.pl
     
 =head1 DESCRIPTION
 

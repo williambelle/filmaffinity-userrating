@@ -17,7 +17,7 @@ use FilmAffinity::Utils;
 
 =head1 NAME - FilmAffinity::Movie
 
-TODO
+FilmAffinity::Movie - Perl interface to FilmAffinity
 
 =head1 VERSION
 
@@ -26,6 +26,57 @@ Version 0.01
 =cut
 
 our $VERSION = 0.01;
+
+=head1 SYNOPSIS
+
+Retrieve information about a filmaffinity movie
+
+    use FilmAffinity::Movie;
+
+    my $movie = FilmAffinity::Movie->new( 
+      id    => $movieID,
+      delay => $delay || 5,
+    );
+    
+    $movie->parse();
+
+Via the command-line program filmaffinity-get-movie-info.pl
+
+=head1 DESCRIPTION
+
+=head2 Overview
+
+FilmAffinity::Movie is a Perl interface to FilmAffinity. You can use 
+this module to retrieve information about a movie.
+
+=head2 Constructor
+
+=over 4
+
+=item new()
+
+Object's constructor. You should pass as parameter the movieID
+ 
+    my $movie = FilmAffinity::Movie->new( id => '932476' ); 
+    
+=back
+
+=head2 Options
+
+=over 4
+
+=item delay
+
+Set the minimum delay between requests to the server, in seconds.
+
+    my $parser = FilmAffinity::Movie->new( 
+      userID => '932476',
+      delay  => 20,
+    );
+    
+By default, the delay is 5 seconds 
+    
+=back
 
 =head1 ACCESSORS
 
@@ -36,6 +87,66 @@ get id
 =head2 $movie->title
 
 get title
+
+=head2 $movie->year
+
+get year
+
+=head2 $movie->duration
+
+get running time (in minutes)
+
+=head2 $movie->synopsis
+
+get synopsis
+
+=head2 $movie->website
+
+get url of the movie website
+
+=head2 $movie->country
+
+get country
+
+=head2 $movie->cover
+
+get url of the cover
+
+=head2 $movie->genre
+
+get genres list
+
+=head2 $movie->topic
+
+get topics list
+
+=head2 $movie->cast
+
+get cast list
+
+=head2 $movie->director
+
+get directors list
+
+=head2 $movie->composer
+
+get composers list
+
+=head2 $movie->screenwriter
+
+get screenwriters list
+
+=head2 $movie->cinematographer
+
+get cinematographers list
+
+=head2 $movie->studio
+
+get studios list
+
+=head2 $movie->producer
+
+get producers list
 
 =cut
 
@@ -158,8 +269,26 @@ sub BUILD {
   $self->ua( buildRobot( $args->{delay} || 5 ) );
 } 
 
+=head1 METHODS
+
+=head2 $movie->parse()
+
+This method will get the content of the filmaffinity webpage and retrieve
+all information about the movie
+
+=cut 
+
+sub parse {
+  my $self = shift;
+  
+  my $content = $self->getContent();
+  $self->parsePage($content);
+}
+
    
 =head2 $movie->getContent()
+
+This method will get the content of the filmaffinity webpage
 
 =cut
 
@@ -175,6 +304,9 @@ sub getContent {
 }
 
 =head2 $movie->parsePage($content)
+
+This method parses a page of filmaffinity that is available as 
+a single string in memory. 
 
 =cut  
   
@@ -192,18 +324,11 @@ sub parsePage {
   $self->tree->delete();
 }
 
-=head2 $movie->parse()
 
-=cut 
-
-sub parse {
-  my $self = shift;
-  
-  my $content = $self->getContent();
-  $self->parsePage($content);
-}
 
 =head2 $movie->toJSON()
+
+This method will export all movie informations in JSON format
 
 =cut 
 
