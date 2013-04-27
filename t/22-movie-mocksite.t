@@ -13,7 +13,7 @@ use FilmAffinity::Movie;
 
 use Test::MockObject::Extends;
 use Test::LongString;
-use Test::More tests => 85;
+use Test::More tests => 90;
 
 my @listMovies = File::Find::Rule->file()->name('*.html')->in(
   't/resources/filmaffinity-local-movie'
@@ -35,7 +35,7 @@ foreach my $movie (@listMovies){
   );
 
   $mock->parse();
-  
+
   my $jsonContent < io('t/resources/json-movie/'.$id.'.json');
   my $jsonData = from_json( $jsonContent );
   
@@ -47,6 +47,8 @@ foreach my $movie (@listMovies){
   
   is($faMovie->country(),  $jsonData->{country},  'country');
   is($faMovie->cover(),    $jsonData->{cover},    'cover');
+  
+  is($faMovie->rating(),    $jsonData->{rating},    'rating');
   
   is_deeply($faMovie->cast(),     $jsonData->{cast},     'cast');
   is_deeply($faMovie->director(), $jsonData->{director}, 'director');
@@ -62,6 +64,4 @@ foreach my $movie (@listMovies){
   is_deeply($faMovie->producer(), $jsonData->{producer}, 'producer'); 
   
   is_string($faMovie->toJSON(), $jsonContent, 'json');
-  
-  warn $faMovie->toJSON();
 }

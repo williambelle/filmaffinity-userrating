@@ -112,6 +112,10 @@ get country
 
 get url of the cover
 
+=head2 $movie->rating
+
+get site rating
+
 =head2 $movie->genre
 
 get genres list
@@ -158,6 +162,7 @@ has synopsis => ( is => 'rw', isa => 'Str', );
 has website  => ( is => 'rw', isa => 'Str', );
 has country  => ( is => 'rw', isa => 'Str', );
 has cover    => ( is => 'rw', isa => 'Str', );
+has rating   => ( is => 'rw', isa => 'Num', );
 
 has genre => ( is => 'rw', isa => 'ArrayRef[Str]', );
 has topic => ( is => 'rw', isa => 'ArrayRef[Str]', );
@@ -190,7 +195,7 @@ my $MOVIE_URL = 'http://www.filmaffinity.com/en/film';
 my @JSON_FIELD = (
   'id', 'title', 'year', 'synopsis', 'website', 'duration', 'cast' , 'director',
   'composer', 'screenwriter', 'cinematographer', 'genre', 'topic', 'studio', 
-  'producer', 'country', 'cover',
+  'producer', 'country', 'cover', 'rating',
 );
 
 my $FIELD = [
@@ -319,7 +324,8 @@ sub parsePage {
   foreach my $data (@{$FIELD}){
     $self->p_findField($data);
   }
-  $self->p_findCountryAndCover();  
+  $self->p_findCountryAndCover(); 
+  $self->p_findRating(); 
 
   $self->tree->delete();
 }
@@ -371,6 +377,17 @@ private_method p_findField => sub {
       last;
     }
   }
+};
+
+private_method p_findRating => sub {
+  my $self = shift;
+    
+  my $rating = $self->tree->look_down( 
+    _tag  => 'td', 
+    align => 'center',
+    style => qr/font-size:22px/,
+  );
+  $self->rating( $rating->as_text() );
 };
 
 private_method p_findCountryAndCover => sub {
