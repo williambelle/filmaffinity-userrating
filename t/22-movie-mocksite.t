@@ -13,7 +13,7 @@ use FilmAffinity::Movie;
 
 use Test::MockObject::Extends;
 use Test::LongString;
-use Test::More tests => 90;
+use Test::More tests => 114;
 
 my @listMovies = File::Find::Rule->file()->name('*.html')->in(
   't/resources/filmaffinity-local-movie'
@@ -49,6 +49,7 @@ foreach my $movie (@listMovies){
   is($faMovie->cover(),    $jsonData->{cover},    'cover');
   
   is($faMovie->rating(),    $jsonData->{rating},    'rating');
+  is($faMovie->votes(),     $jsonData->{votes},    'votes');
   
   is_deeply($faMovie->cast(),     $jsonData->{cast},     'cast');
   is_deeply($faMovie->director(), $jsonData->{director}, 'director');

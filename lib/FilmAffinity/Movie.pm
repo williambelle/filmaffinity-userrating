@@ -21,11 +21,11 @@ FilmAffinity::Movie - Perl interface to FilmAffinity
 
 =head1 VERSION
 
-Version 0.01
+Version 0.03
 
 =cut
 
-our $VERSION = 0.01;
+our $VERSION = 0.03;
 
 =head1 SYNOPSIS
 
@@ -116,6 +116,10 @@ get url of the cover
 
 get site rating
 
+=head2 $movie->votes
+
+get number of votes
+
 =head2 $movie->genre
 
 get genres list
@@ -163,6 +167,7 @@ has website  => ( is => 'rw', isa => 'Str', );
 has country  => ( is => 'rw', isa => 'Str', );
 has cover    => ( is => 'rw', isa => 'Str', );
 has rating   => ( is => 'rw', isa => 'Num', );
+has votes    => ( is => 'rw', isa => 'Num', );
 
 has genre => ( is => 'rw', isa => 'ArrayRef[Str]', );
 has topic => ( is => 'rw', isa => 'ArrayRef[Str]', );
@@ -195,7 +200,7 @@ my $MOVIE_URL = 'http://www.filmaffinity.com/en/film';
 my @JSON_FIELD = (
   'id', 'title', 'year', 'synopsis', 'website', 'duration', 'cast' , 'director',
   'composer', 'screenwriter', 'cinematographer', 'genre', 'topic', 'studio', 
-  'producer', 'country', 'cover', 'rating',
+  'producer', 'country', 'cover', 'rating', 'votes',
 );
 
 my $FIELD = [
@@ -326,6 +331,7 @@ sub parsePage {
   }
   $self->p_findCountryAndCover(); 
   $self->p_findRating(); 
+  $self->p_findVotes(); 
 
   $self->tree->delete();
 }
@@ -387,7 +393,24 @@ private_method p_findRating => sub {
     align => 'center',
     style => qr/font-size:22px/,
   );
+  
+  return if not defined $rating;
   $self->rating( $rating->as_text() );
+};
+
+private_method p_findVotes => sub {
+  my $self = shift;
+  
+  my $votes = $self->tree->look_down( 
+    _tag  => 'td', 
+    align => 'center',
+    sub { $_[0]->as_text() =~ m/votes/ }
+  );
+  
+  return if not defined $votes; 
+  $votes = $votes->as_text();
+  $votes =~ s/\D//gi;
+  $self->votes( $votes );
 };
 
 private_method p_findCountryAndCover => sub {
