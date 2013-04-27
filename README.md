@@ -14,10 +14,23 @@ use FilmAffinity::UserRating;
 my $parser = FilmAffinity::UserRating->new( userID => '123456' );
 my $ref_movies = $parser->parse();
 ```
+
+Retrieve information about a filmaffinity movie
+
+```perl
+use FilmAffinity::Movie;
+
+my $movie = FilmAffinity::Movie->new( id => '348488' );
+$movie->parse();
+
+my $title = $movie->title;
+```
     
 Via the command-line program
 
     filmaffinity-get-rating.pl --userid=123456
+    
+    filmaffinity-get-movie-info.pl --id=348488
 
 Installation
 ------------
@@ -36,6 +49,8 @@ After installing, you can find documentation for this module with the
 perldoc command.
 
     perldoc FilmAffinity::UserRating
+    perldoc FilmAffinity::Utils
+    perldoc FilmAffinity::Movie
 
 You can also look for information at:
 
