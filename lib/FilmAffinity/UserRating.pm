@@ -173,7 +173,7 @@ sub parseString {
  
   my $tree = HTML::TreeBuilder->new();
   $tree->parse($content);    
-  $self->p_username($tree->findvalue( '//td/div/b' ));
+  $self->p_username($tree->findvalue( '//span[@id="nick"]/b' ));
      
   my @movieLink = $self->p_findListMovieLink($tree);
   my @ids       = map { $_->attr('href') =~ m/$REGEX_ID/gi ? $1 : undef } @movieLink;
