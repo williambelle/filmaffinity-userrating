@@ -12,6 +12,7 @@
       "William Haze",
       "Bar Paly"
    ],
+   "rating" : "5.8",
    "director" : [
       "Michael Bay"
    ],
@@ -24,8 +25,12 @@
    "composer" : [
       "Steve Jablonsky"
    ],
+   "votes" : "757",
    "topic" : [
-      "Black comedy"
+      "Based on a true story",
+      "Black comedy",
+      "Crime",
+      "Kidnapping Film"
    ],
    "country" : "United States",
    "studio" : [
@@ -40,9 +45,8 @@
    "duration" : "130",
    "genre" : [
       "Action",
-      "Comedy",
-      "Drama"
+      "Comedy"
    ],
-   "title" : "Pain & Gain",
+   "title" : "Pain & Gain (Pain and Gain)",
    "year" : "2013"
 }
