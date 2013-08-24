@@ -169,7 +169,7 @@ a single string in memory.
 sub parseString {
   my ($self, $content) = @_;
   
-  $content = decode('cp1252', $content);
+  $content = decode('iso8859-1', $content);
  
   my $tree = HTML::TreeBuilder->new();
   $tree->parse($content);    
@@ -226,7 +226,7 @@ private_method p_findListRatings => sub {
 private_method p_isNextPage => sub {
   my ($self, $content) = @_; 
   
-  if ($content =~ m/<b>&gt;&gt;<\/b><\/a>/){
+  if ($content =~ m/>&gt;&gt;<\/a><\/div><\/td>/){
     return 1;
   }
   return 0; 

@@ -23,7 +23,7 @@ $mock->mock(
 
 my $ref_movies = $mock->parse();
 
-is(scalar keys %{$ref_movies}, 79, 'number of movie rated');
+is(scalar keys %{$ref_movies}, 69, 'number of movie rated');
 
 my $title  = $ref_movies->{267002}->{title};
 my $rating = $ref_movies->{267002}->{rating};
