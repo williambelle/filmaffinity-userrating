@@ -71,7 +71,7 @@ my $ref_movies = $userParser->parse();
 
 my $tsv;
 foreach my $mov (sort {sortByRatings($ref_movies)} keys %{$ref_movies}){
-  $tsv .= $ref_movies->{$mov}{'title'}."\t".$ref_movies->{$mov}{'rating'}."\n"; 
+  $tsv .= $mov."\t".$ref_movies->{$mov}{'title'}."\t".$ref_movies->{$mov}{'rating'}."\n"; 
 }
 
 $output ? $tsv > io($output) : print $tsv;
