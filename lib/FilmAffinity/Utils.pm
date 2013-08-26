@@ -20,7 +20,7 @@ our $VERSION = 0.03;
 require Exporter;
 
 our @ISA    = qw/Exporter/;
-our @EXPORT = qw/demoronize buildRobot/;
+our @EXPORT = qw/demoronize buildRobot data2tsv/;
 
 =head1 EXPORT
 
@@ -76,6 +76,32 @@ sub buildRobot {
   $ua->delay($delay/60); 
   
   return $ua; 
+}
+
+=head2 data2tsv
+
+Transform FilmAffinity::UserRating in tab separated value
+
+Returns a tsv string
+
+=cut
+
+sub data2tsv {
+  my ( $data ) = shift;
+  
+  my $tsvString;
+  foreach my $mov ( sort { p_sortByRatings($data) } keys %{$data}){
+    $tsvString .= $mov ."\t" . 
+                  $data->{$mov}{'title'} . "\t" . 
+                  $data->{$mov}{'rating'}."\n"; 
+  }
+  
+  return $tsvString; 
+}
+
+sub p_sortByRatings {
+  my ($ref_movies) = @_;  
+  return $ref_movies->{$b}{'rating'} <=> $ref_movies->{$a}{'rating'};
 }
 
 =head1 AUTHOR

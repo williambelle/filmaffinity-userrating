@@ -7,6 +7,7 @@ use Getopt::Long;
 use Pod::Usage;
 
 use IO::All -utf8;
+use FilmAffinity::Utils;
 use FilmAffinity::UserRating;
 
 =head1 NAME - filmaffinity-get-ratings.pl
@@ -69,17 +70,10 @@ my $userParser = FilmAffinity::UserRating->new(
 
 my $ref_movies = $userParser->parse();
 
-my $tsv;
-foreach my $mov (sort {sortByRatings($ref_movies)} keys %{$ref_movies}){
-  $tsv .= $mov."\t".$ref_movies->{$mov}{'title'}."\t".$ref_movies->{$mov}{'rating'}."\n"; 
-}
+my $tsv = data2tsv( $ref_movies );
 
 $output ? $tsv > io($output) : print $tsv;
   
-sub sortByRatings {
-  my ($ref_movies) = @_;  
-  return $ref_movies->{$b}{'rating'} <=> $ref_movies->{$a}{'rating'};
-}
 
 =head1 AUTHOR
 
