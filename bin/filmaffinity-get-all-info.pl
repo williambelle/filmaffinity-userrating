@@ -75,6 +75,22 @@ my $ref_movies = $userParser->parse();
 my $tsv = data2tsv( $ref_movies );
 $tsv > io($destination.'/ratings.list');
 
+my $progress;
+if ( -t STDOUT ) {
+  eval {
+    require Term::ProgressBar;
+    $progress = Term::ProgressBar->new({ 
+      name   => 'jsonize movie information', 
+      count  => scalar keys %{$ref_movies}, 
+      remove => 1 
+    });
+  };
+  if ($@) {
+    warn "Could not create progress bar. We can continue, but no progress will be reported";
+  }
+}
+
+my $count = 0;
 foreach my $id ( keys %{$ref_movies}){
   
   my $movie = FilmAffinity::Movie->new( 
@@ -84,7 +100,10 @@ foreach my $id ( keys %{$ref_movies}){
   $movie->parse();
 
   my $json = $movie->toJSON();
-  $json > io($destination.'/json/'.$id.'.json');  
+  $json > io($destination.'/json/'.$id.'.json'); 
+  
+  $count++;
+  $progress->update($count) if $progress;    
 }
 
 =head1 AUTHOR
