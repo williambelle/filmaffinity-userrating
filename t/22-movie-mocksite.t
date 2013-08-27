@@ -13,7 +13,7 @@ use FilmAffinity::Movie;
 
 use Test::MockObject::Extends;
 use Test::LongString;
-use Test::More tests => 114;
+use Test::More tests => 120;
 
 my @listMovies = File::Find::Rule->file()->name('*.html')->in(
   't/resources/filmaffinity-local-movie'
@@ -40,6 +40,7 @@ foreach my $movie (@listMovies){
   my $jsonData = from_json( $jsonContent );
   
   is($faMovie->title(),    $jsonData->{title},    'title'); 
+  is($faMovie->originaltitle(),    $jsonData->{originaltitle},    'originaltitle'); 
   is($faMovie->year(),     $jsonData->{year},     'year'); 
   is($faMovie->duration(), $jsonData->{duration}, 'duration'); 
   is($faMovie->synopsis(), $jsonData->{synopsis}, 'synopsis');

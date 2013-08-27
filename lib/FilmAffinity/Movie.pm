@@ -88,6 +88,10 @@ get id
 
 get title
 
+=head2 $movie->originaltitle
+
+get original title
+
 =head2 $movie->year
 
 get year
@@ -160,6 +164,7 @@ get producers list
 
 has id       => ( is => 'ro', isa => 'Int', required => 1, );
 has title    => ( is => 'rw', isa => 'Str', );
+has originaltitle    => ( is => 'rw', isa => 'Str', );
 has year     => ( is => 'rw', isa => 'Int', );
 has duration => ( is => 'rw', isa => 'Int', );
 has synopsis => ( is => 'rw', isa => 'Str', );
@@ -200,12 +205,12 @@ my $MOVIE_URL = 'http://www.filmaffinity.com/en/film';
 my @JSON_FIELD = (
   'id', 'title', 'year', 'synopsis', 'website', 'duration', 'cast' , 'director',
   'composer', 'screenwriter', 'cinematographer', 'genre', 'topic', 'studio', 
-  'producer', 'country', 'cover', 'rating', 'votes',
+  'producer', 'country', 'cover', 'rating', 'votes', 'originaltitle',
 );
 
 my $FIELD = [
   { 
-    accessor => 'title', 
+    accessor => 'originaltitle', 
     faTag    => 'ORIGINAL TITLE', 
   },
   { 
@@ -332,6 +337,7 @@ sub parsePage {
   $self->p_findCountryAndCover(); 
   $self->p_findRating(); 
   $self->p_findVotes(); 
+  $self->p_findTitle();
 
   $self->tree->delete();
 }
@@ -396,6 +402,17 @@ private_method p_findRating => sub {
   
   return if not defined $rating;
   $self->rating( $rating->as_text() );
+};
+
+private_method p_findTitle => sub {
+  my $self = shift;  
+  
+  my @images =  $self->tree->findnodes( '//span/img' );
+  foreach my $image (@images){
+    if ( $image->attr('src') =~ m/movie.gif/ ){
+      $self->title(  trim($image->parent()->as_text()) ); 
+    }  
+  }
 };
 
 private_method p_findVotes => sub {
