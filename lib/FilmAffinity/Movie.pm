@@ -5,6 +5,7 @@ use warnings;
 
 use JSON;
 use Encode;
+use Scalar::Util qw(looks_like_number);
 use Text::Trim;
 use LWP::RobotUA;
 use HTML::TreeBuilder;
@@ -21,7 +22,7 @@ FilmAffinity::Movie - Perl interface to FilmAffinity
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
@@ -385,6 +386,8 @@ private_method p_findField => sub {
         $value = $data->{cleanerSub}($value, $accessor);
       }
       
+      next if not defined $value;
+      
       $self->$accessor( $value );
       last;
     }
@@ -460,7 +463,12 @@ private_method p_removeTextBetweenParenthesis => sub {
 private_method p_cleanDuration => sub {
   my $value = shift;
   $value =~ s/min\.//gi;
-  return trim($value);
+  $value = trim($value);
+  
+  if ( looks_like_number($value) ){
+    return $value    
+  } 
+  return undef;
 };
 
 private_method p_cleanPerson => sub {
