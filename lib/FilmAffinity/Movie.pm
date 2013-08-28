@@ -483,9 +483,13 @@ private_method p_cleanGenre => sub {
   my ($value, $field) = @_;
   
   my $pos = $field eq 'genre' ? 0 : 1;
-  my @list = split(/\|/, $value);   
-  my @genres = trim ( split(/\./, $list[$pos] ) );
-  return \@genres;
+  my @list = split(/\|/, $value);
+  
+  if ( defined $list[$pos]){
+    my @genres = trim ( split(/\./, $list[$pos] ) );  
+    return \@genres;
+  }   
+  return undef;
 };
 
 private_method p_cleanStudio => sub {

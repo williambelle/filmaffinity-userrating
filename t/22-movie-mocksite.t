@@ -66,4 +66,6 @@ foreach my $movie (@listMovies){
   is_deeply($faMovie->producer(), $jsonData->{producer}, 'producer'); 
   
   is_string($faMovie->toJSON(), $jsonContent, 'json');
+  
+  warn $faMovie->toJSON();
 }
