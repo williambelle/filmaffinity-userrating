@@ -1,5 +1,20 @@
 Revision history for FilmAffinity-UserRating
 
 0.01    23 Feb 2013 / 18h00
-        First version, released on an unsuspecting world.
+        First release to "master"
+        Get filmaffinity voted movies from a user
 
+0.02    20 Apr 2013 / 17h40
+        Get information from filmaffinity about a film
+        
+0.03    27 Apr 2013 / 16h00
+        Retrieve votes
+        Retrieve global rating
+        
+0.04    29 Aug 2013 / 20h30
+        bug-fix: films with empty duration
+        bug-fix: films with empty topics
+        bug-fix: confusion between title and original title
+        
+        New script to get information from filmaffinity
+        

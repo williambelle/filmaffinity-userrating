@@ -13,7 +13,7 @@ use FilmAffinity::Movie;
 
 use Test::MockObject::Extends;
 use Test::LongString;
-use Test::More tests => 120;
+use Test::More tests => 140;
 
 my @listMovies = File::Find::Rule->file()->name('*.html')->in(
   't/resources/filmaffinity-local-movie'
@@ -66,6 +66,4 @@ foreach my $movie (@listMovies){
   is_deeply($faMovie->producer(), $jsonData->{producer}, 'producer'); 
   
   is_string($faMovie->toJSON(), $jsonContent, 'json');
-  
-  warn $faMovie->toJSON();
 }
