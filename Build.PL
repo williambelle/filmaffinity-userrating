@@ -25,6 +25,7 @@ my $builder = Module::Build->new(
         'IO::All'                  => 0,
         'Encode'                   => 0,
         'JSON'                     => 0,
+        'List::Compare'            => 0,
     },
     add_to_cleanup      => [ 'FilmAffinity-UserRating-*' ],
     create_makefile_pl => 'traditional',

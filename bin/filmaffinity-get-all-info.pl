@@ -7,6 +7,7 @@ use Getopt::Long;
 use Pod::Usage;
 
 use IO::All -utf8;
+use List::Compare;
 use FilmAffinity::Movie;
 use FilmAffinity::Utils;
 use FilmAffinity::UserRating;
@@ -17,17 +18,17 @@ get information from filmaffinity about a film and all ratings from a user
 
 =head1 SYNOPSIS
 
-  ./filmaffinity-get-all-info.pl --userid=123456
+  ./filmaffinity-get-all-info.pl --userid=123456 --destination=path/to/my/folder
   
-  ./filmaffinity-get-all-info.pl --userid=123456 --delay=2
+  ./filmaffinity-get-all-info.pl --userid=123456 --destination=path/to/my/folder --delay=2
   
-  ./filmaffinity-get-all-info.pl --userid=123456 --
+  ./filmaffinity-get-all-info.pl --userid=123456 --destination=path/to/my/folder --force
 
 =head1 ARGUMENTS
 
 =over 2
 
-=item --userid=192076
+=item --userid=123456
 
 userid from filmaffinity
 
@@ -45,16 +46,21 @@ destination folder
 
 delay between requests
 
+=item --force
+
+force to retrieve all movies
+
 =back
 
 =cut
 
-my ( $userID, $delay, $destination, $help );
+my ( $userID, $delay, $destination, $force, $help );
 
 GetOptions(
   "userid=i"      => \$userID,
   "delay=i"       => \$delay,
   "destination=s" => \$destination,
+  "force"         => \$force,
   "help"          => \$help,
 ) 
 || pod2usage(2);
@@ -64,8 +70,7 @@ if ( $help || !$userID || !$destination ) {
   exit(0);
 }
 
-mkdir $destination;
-mkdir $destination.'/json';
+&setFileSystem( $destination );
 
 my $userParser = FilmAffinity::UserRating->new( 
   userID => $userID,
@@ -75,13 +80,23 @@ my $ref_movies = $userParser->parse();
 my $tsv = data2tsv( $ref_movies );
 $tsv > io($destination.'/ratings.list');
 
+my @listOfRemoteMovieId = keys %{$ref_movies};
+my @listOfLocalMovieId  = &getListOfLocalMovieId( $destination );
+
+my $listCompare = List::Compare->new(
+  \@listOfLocalMovieId, 
+  \@listOfRemoteMovieId,
+);
+
+my @listOfMovieToRetrieve = $force ? @listOfRemoteMovieId : $listCompare->get_Ronly();
+
 my $progress;
 if ( -t STDOUT ) {
   eval {
     require Term::ProgressBar;
     $progress = Term::ProgressBar->new({ 
       name   => 'jsonize movie information', 
-      count  => scalar keys %{$ref_movies}, 
+      count  => scalar @listOfMovieToRetrieve, 
       remove => 1 
     });
   };
@@ -91,7 +106,7 @@ if ( -t STDOUT ) {
 }
 
 my $count = 0;
-foreach my $id ( keys %{$ref_movies}){
+foreach my $id ( @listOfMovieToRetrieve ){
   
   my $movie = FilmAffinity::Movie->new( 
     id    => $id,
@@ -104,6 +119,26 @@ foreach my $id ( keys %{$ref_movies}){
   
   $count++;
   $progress->update($count) if $progress;    
+}
+
+
+sub setFileSystem {
+  my ( $destination ) = shift;
+  mkdir $destination;
+  mkdir $destination.'/json';  
+}
+
+sub getListOfLocalMovieId {
+  my ( $destination ) = shift;
+
+  my @listOfLocalMovie = ();
+  my @content = io($destination.'/json')->all();
+  foreach my $file (@content){
+    my $filename = $file->filename;
+    $filename =~ s/\.json//;
+    push @listOfLocalMovie, $filename; 
+  }
+  return @listOfLocalMovie;  
 }
 
 =head1 AUTHOR
