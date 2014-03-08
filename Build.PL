@@ -10,6 +10,7 @@ my $builder = Module::Build->new(
     dist_version_from   => 'lib/FilmAffinity/UserRating.pm',
     build_requires => {
         'Test::More'       => 0,
+        'Test::JSON'       => 0.11,
         'File::Find::Rule' => 0.33,
         'Test::MockObject' => 1.20,
         'Test::LongString' => 0.15,
