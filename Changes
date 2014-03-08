@@ -22,3 +22,6 @@ Revision history for FilmAffinity-UserRating
         Improve script to retrieve only the difference since last run
         add "force" option to retrieve all movies again
                
+0.06    08 Mar 2014 / 20h00
+        bug-fix: encoding problems with unit test
+        Improve unit test with json files           
