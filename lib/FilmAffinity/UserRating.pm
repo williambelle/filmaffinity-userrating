@@ -119,8 +119,10 @@ has ua => (
   traits  => [qw/Private/],
 ); 
  
-my $REGEX_ID   = '\/en\/film(.*).html';
-my $RATING_URL = 'http://www.filmaffinity.com/en/userratings.php?orderby=2&';
+my $RATING_URL   = 'http://www.filmaffinity.com/en/userratings.php?orderby=2&';
+my $XPATH_ID     = '//table[@class="amovie_info"]/tr/child::*[1]/div/@data-movie-id';
+my $XPATH_TITLE  = '//div[@class="mc-title"]/a';
+my $XPATH_RATING = '//table[@class="amovie_info"]/tr/child::*[2]/div/child::*[1]';
 
 sub BUILD {
   my ($self, $args) = @_;
@@ -173,12 +175,11 @@ sub parseString {
  
   my $tree = HTML::TreeBuilder->new();
   $tree->parse($content);    
-  $self->p_username($tree->findvalue( '//span[@id="nick"]/b' ));
+  $self->p_username($tree->findvalue( '//span[@id="nick"]' ));
      
-  my @movieLink = $self->p_findListMovieLink($tree);
-  my @ids       = map { $_->attr('href') =~ m/$REGEX_ID/gi ? $1 : undef } @movieLink;
-  my @titles    = map { $_->as_text() } @movieLink;
-  my @ratings   = $self->p_findListRatings($tree);
+  my @ids       = $tree->findnodes_as_strings( $XPATH_ID );
+  my @titles    = $tree->findnodes_as_strings( $XPATH_TITLE );
+  my @ratings   = $tree->findnodes_as_strings( $XPATH_RATING );
   
   $self->p_buildMovieInfo(\@ids, \@titles, \@ratings);
 
@@ -202,31 +203,10 @@ private_method p_buildMovieInfo => sub {
   }    
 };
 
-private_method p_findListMovieLink => sub {
-  my ($self, $tree) = @_;
-  
-  return  $tree->look_down(
-    _tag  => 'a',
-    class => 'ntext',
-    sub { $_[0]->attr('href') =~ m/$REGEX_ID/gi },
-  );
-};  
-
-private_method p_findListRatings => sub {
-  my ($self, $tree) = @_; 
-  
-  my @ratings = $tree->look_down(
-    _tag  => 'span',
-    class => 'wrat',
-    sub { $_[0]->as_text() !~ m/Rating date/gi },
-  );
-  return map {trim($_->as_text)} @ratings;
-};
-
 private_method p_isNextPage => sub {
   my ($self, $content) = @_; 
   
-  if ($content =~ m/>&gt;&gt;<\/a><\/div><\/td>/){
+  if ($content =~ m/>&gt;&gt;<\/a><\/div><\/div><\/td>/){
     return 1;
   }
   return 0; 
