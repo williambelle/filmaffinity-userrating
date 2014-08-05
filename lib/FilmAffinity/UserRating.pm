@@ -171,6 +171,7 @@ a single string in memory.
 sub parseString {
   my ($self, $content) = @_;
   
+  $content = demoronize($content);
   $content = decode('iso8859-1', $content);
  
   my $tree = HTML::TreeBuilder->new();
