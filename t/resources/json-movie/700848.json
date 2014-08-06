@@ -6,39 +6,39 @@
       "Bjørn Sundquist",
       "Charlotte Frogner"
    ],
-   "rating" : "4.7",
-   "director" : [
-      "Tommy Wirkola"
-   ],
-   "cover" : "http://pics.filmaffinity.com/Dead_Snow-700848-full.jpg",
-   "synopsis" : "A ski vacation turns horrific for a group of medical students, as they find themselves confronted by an unimaginable menace: Nazi zombies.  Norway Release Date: 9 January 2009.",
-   "id" : "700848",
-   "cinematographer" : [
-      "Matthew Weston"
-   ],
    "composer" : [
       "Christin Wibe"
    ],
-   "votes" : "7237",
+   "screenwriter" : [
+      "Tommy Wirkola",
+      "Stig Frode Henriksen"
+   ],
+   "director" : [
+      "Tommy Wirkola"
+   ],
+   "cinematographer" : [
+      "Matthew Weston"
+   ],
+   "country" : "Norway",
+   "cover" : "http://pics.filmaffinity.com/Dead_Snow-119808222-main.jpg",
+   "originaltitle" : "Død snø (Dead Snow) (Dod Sno)",
+   "id" : "700848",
+   "title" : "Dead Snow",
+   "synopsis" : "A ski vacation turns horrific for a group of medical students, as they find themselves confronted by an unimaginable menace: Nazi zombies.  Norway Release Date: 9 January 2009.",
+   "duration" : "90",
    "topic" : [
       "Horror Comedy",
       "Gore",
       "Zombies"
    ],
-   "country" : "Norway",
-   "studio" : [
-      "Euforia Film"
-   ],
-   "originaltitle" : "Død snø (Dead Snow) (Dod Sno)",
-   "screenwriter" : [
-      "Tommy Wirkola",
-      "Stig Frode Henriksen"
-   ],
-   "duration" : "90",
+   "year" : "2009",
+   "votes" : "7721",
    "genre" : [
       "Horror",
       "Comedy"
    ],
-   "title" : "Dead Snow",
-   "year" : "2009"
+   "rating" : "4.6",
+   "studio" : [
+      "Euforia Film"
+   ]
 }

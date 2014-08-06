@@ -1,5 +1,16 @@
 {
-   "website" : "http://www.painandgainmovie.com/",
+   "studio" : [
+      "Paramount Pictures",
+      "Platinum Dunes",
+      "De Line Pictures"
+   ],
+   "composer" : [
+      "Steve Jablonsky"
+   ],
+   "director" : [
+      "Michael Bay"
+   ],
+   "rating" : "5.8",
    "cast" : [
       "Mark Wahlberg",
       "Dwayne \"The Rock\" Johnson",
@@ -10,44 +21,37 @@
       "Ken Jeong",
       "Rob Corddry",
       "William Haze",
-      "Bar Paly"
+      "Bar Paly",
+      "Peter Stormare",
+      "Keili Lefkovitz",
+      "Yolanthe Cabau"
    ],
-   "rating" : "5.8",
-   "director" : [
-      "Michael Bay"
-   ],
-   "cover" : "http://pics.filmaffinity.com/Pain_Gain-348488-full.jpg",
-   "synopsis" : "A pair of bodybuilders in Florida get caught up in an extortion ring and a kidnapping scheme that goes terribly wrong.",
-   "id" : "348488",
-   "cinematographer" : [
-      "Ben Seresin"
-   ],
-   "composer" : [
-      "Steve Jablonsky"
-   ],
-   "votes" : "757",
+   "website" : "http://www.painandgainmovie.com/",
    "topic" : [
       "Based on a true story",
       "Black comedy",
       "Crime",
-      "Kidnapping Film"
+      "Kidnapping Film / Disappearance",
+      "Drugs"
    ],
    "country" : "United States",
-   "studio" : [
-      "Paramount Pictures",
-      "Platinum Dunes",
-      "De Line Pictures"
-   ],
    "originaltitle" : "Pain & Gain (Pain and Gain)",
+   "cinematographer" : [
+      "Ben Seresin"
+   ],
+   "synopsis" : "A pair of bodybuilders in Florida get caught up in an extortion ring and a kidnapping scheme that goes terribly wrong.",
+   "title" : "Pain & Gain",
+   "year" : "2013",
    "screenwriter" : [
       "Christopher Markus",
       "Stephen McFeely"
    ],
-   "duration" : "130",
+   "id" : "348488",
+   "duration" : "129",
    "genre" : [
-      "Action",
-      "Comedy"
+      "Comedy",
+      "Action"
    ],
-   "title" : "Pain & Gain",
-   "year" : "2013"
+   "votes" : "9633",
+   "cover" : "http://pics.filmaffinity.com/Pain_amp_Gain-892842537-main.jpg"
 }
