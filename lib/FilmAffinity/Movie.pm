@@ -201,7 +201,10 @@ has ua => (
   traits  => [qw/Private/],
 ); 
 
-my $MOVIE_URL = 'http://www.filmaffinity.com/en/film';
+my $MOVIE_URL    = 'http://www.filmaffinity.com/en/film';
+my $XPATH_TITLE  = '//h1[@id="main-title"]';
+my $XPATH_RATING = '//div[@id="movie-rat-avg"]';
+my $XPATH_VOTE   = '//div[@id="movie-count-rat"]/span';
 
 my @JSON_FIELD = (
   'id', 'title', 'year', 'synopsis', 'website', 'duration', 'cast' , 'director',
@@ -212,68 +215,68 @@ my @JSON_FIELD = (
 my $FIELD = [
   { 
     accessor => 'originaltitle', 
-    faTag    => 'ORIGINAL TITLE', 
+    faTag    => 'Original title', 
   },
   { 
     accessor => 'year', 
-    faTag    => 'YEAR', 
+    faTag    => 'Year', 
   },
   { 
     accessor => 'synopsis', 
-    faTag    => 'SYNOPSIS/PLOT', 
+    faTag    => 'Synopsis / Plot', 
   },
   { 
     accessor => 'website', 
-    faTag    => 'OFFICIAL WEB', 
+    faTag    => 'Official Site', 
   },  
   {
     accessor   => 'duration', 
-    faTag      => 'RUNNING TIME', 
+    faTag      => 'Running Time', 
     cleanerSub => \&p_cleanDuration, 
   },
   { 
     accessor   => 'cast', 
-    faTag      => 'CAST', 
+    faTag      => 'Cast', 
     cleanerSub => \&p_cleanPerson, 
   },
   { 
     accessor   => 'director', 
-    faTag      => 'DIRECTOR',     
+    faTag      => 'Director',     
     cleanerSub => \&p_cleanPerson,
   },
   { 
     accessor   => 'composer', 
-    faTag      => 'COMPOSER',     
+    faTag      => 'Music',     
     cleanerSub => \&p_cleanPerson,
   },  
   { 
     accessor   => 'screenwriter', 
-    faTag      => 'SCREENWRITER',    
+    faTag      => 'Screenwriter',    
     cleanerSub => \&p_cleanPerson,
   },
   { 
     accessor   => 'cinematographer', 
-    faTag      => 'CINEMATOGRAPHER', 
+    faTag      => 'Cinematography', 
     cleanerSub => \&p_cleanPerson,
   },
   { 
     accessor   => 'genre', 
-    faTag      => 'GENRE', 
+    faTag      => 'Genre', 
     cleanerSub => \&p_cleanGenre, 
   },
   { 
     accessor   => 'topic', 
-    faTag      => 'GENRE', 
+    faTag      => 'Genre', 
     cleanerSub => \&p_cleanGenre, 
   }, 
   { 
     accessor   => 'studio', 
-    faTag      => 'STUDIO/PRODUCER', 
+    faTag      => 'Production Co.', 
     cleanerSub => \&p_cleanStudio,
   },
   { 
     accessor   => 'producer' , 
-    faTag      => 'STUDIO/PRODUCER', 
+    faTag      => 'Production Co.', 
     cleanerSub => \&p_cleanStudio, 
   },
 ];
@@ -315,7 +318,7 @@ sub getContent {
 
   my $response = $self->ua->get($url);
   if ($response->is_success){
-    return $response->decoded_content();
+    return $response->content();
   }
 }
 
@@ -329,7 +332,7 @@ a single string in memory.
 sub parsePage {
   my ($self, $content) = @_;
   
-  $content = decode('cp1252', $content);
+  $content = decode('utf-8', $content);
   $self->tree->parse($content);
 
   foreach my $data (@{$FIELD}){
@@ -365,20 +368,15 @@ sub toJSON {
 private_method p_findField => sub {
   my ( $self, $data ) = @_;
   
-  my @nodes = $self->tree->findnodes( '//td/b' );
+  my @nodes = $self->tree->findnodes( '//dl[@class="movie-info"]/dt' );
   foreach my $node (@nodes){
     if ( trim( $node->as_text() ) eq $data->{faTag} ){
       
-      my $searched_node = $node->parent()->right();
-      my $td = $searched_node->look_down( 
-        _tag  => 'td', 
-        align => undef,
-        sub { $_[0]->as_HTML() !~ m/<table(.*)>/ }
-      );
+      my $searched_node = $node->right();
       
       my $accessor = $data->{accessor};
 
-      my $value = trim( demoronize( $td->as_text() ) );
+      my $value = trim( $searched_node->as_text() );
       
       next if $value eq '';
 
@@ -387,7 +385,7 @@ private_method p_findField => sub {
       }
       
       next if not defined $value;
-      
+
       $self->$accessor( $value );
       last;
     }
@@ -397,40 +395,26 @@ private_method p_findField => sub {
 private_method p_findRating => sub {
   my $self = shift;
     
-  my $rating = $self->tree->look_down( 
-    _tag  => 'td', 
-    align => 'center',
-    style => qr/font-size:22px/,
-  );
-  
+  my $rating = $self->tree->findvalue( $XPATH_RATING );
+
   return if not defined $rating;
-  $self->rating( $rating->as_text() );
+  $self->rating( trim($rating) );
 };
 
 private_method p_findTitle => sub {
   my $self = shift;  
   
-  my @images =  $self->tree->findnodes( '//span/img' );
-  foreach my $image (@images){
-    if ( $image->attr('src') =~ m/movie.gif/ ){
-      $self->title(  trim($image->parent()->as_text()) ); 
-    }  
-  }
+  $self->title( $self->tree->findnodes_as_strings( $XPATH_TITLE ) ); 
 };
 
 private_method p_findVotes => sub {
   my $self = shift;
   
-  my $votes = $self->tree->look_down( 
-    _tag  => 'td', 
-    align => 'center',
-    sub { $_[0]->as_text() =~ m/votes/ }
-  );
+  my $votes = $self->tree->findvalue( $XPATH_VOTE );
   
-  return if not defined $votes; 
-  $votes = $votes->as_text();
-  $votes =~ s/\D//gi;
-  $self->votes( $votes );
+  return if not defined $votes;
+  $votes =~ s/\D//gi; 
+  $self->votes( trim($votes) );
 };
 
 private_method p_findCountryAndCover => sub {
@@ -468,7 +452,7 @@ private_method p_cleanDuration => sub {
   if ( looks_like_number($value) ){
     return $value    
   } 
-  return undef;
+  return;
 };
 
 private_method p_cleanPerson => sub {
@@ -489,7 +473,7 @@ private_method p_cleanGenre => sub {
     my @genres = trim ( split(/\./, $list[$pos] ) );  
     return \@genres;
   }   
-  return undef;
+  return;
 };
 
 private_method p_cleanStudio => sub {
@@ -500,7 +484,7 @@ private_method p_cleanStudio => sub {
   
   my @studio = ();
   if (not defined $list[$pos]){
-    return undef;
+    return;
   } else {
     @studio = trim ( split(/ \/ /, $list[$pos] ) );
     return \@studio;  
