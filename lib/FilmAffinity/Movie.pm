@@ -201,10 +201,12 @@ has ua => (
   traits  => [qw/Private/],
 ); 
 
-my $MOVIE_URL    = 'http://www.filmaffinity.com/en/film';
-my $XPATH_TITLE  = '//h1[@id="main-title"]';
-my $XPATH_RATING = '//div[@id="movie-rat-avg"]';
-my $XPATH_VOTE   = '//div[@id="movie-count-rat"]/span';
+my $MOVIE_URL     = 'http://www.filmaffinity.com/en/film';
+my $XPATH_TITLE   = '//h1[@id="main-title"]';
+my $XPATH_RATING  = '//div[@id="movie-rat-avg"]';
+my $XPATH_VOTE    = '//div[@id="movie-count-rat"]/span';
+my $XPATH_COUNTRY = '//span[@id="country-img"]/img/@title';
+my $XPATH_COVER   = '//div[@id="movie-main-image-container"]/a/img/@src';
 
 my @JSON_FIELD = (
   'id', 'title', 'year', 'synopsis', 'website', 'duration', 'cast' , 'director',
@@ -420,15 +422,10 @@ private_method p_findVotes => sub {
 private_method p_findCountryAndCover => sub {
   my $self = shift;
   
-  my @images =  $self->tree->findnodes( '//img' );
-  foreach my $image (@images){
-    if ($image->attr('src') =~ m{/imgs/countries/}){        
-      $self->country( $image->attr('title') );
-    }  
-    if ($image->attr('src') =~ m/pics\.filmaffinity\.com/){        
-      $self->cover( $image->attr('src') );
-    }  
-  }
+  $self->country( $self->tree->findvalue( $XPATH_COUNTRY ) );
+
+  $self->cover( $self->tree->findvalue( $XPATH_COVER ) );
+
 };
 
 private_method p_buildUrlMovie => sub {
