@@ -340,10 +340,12 @@ sub parsePage {
   foreach my $data (@{$FIELD}){
     $self->p_findField($data);
   }
-  $self->p_findCountryAndCover(); 
+
   $self->p_findRating(); 
-  $self->p_findVotes(); 
-  $self->p_findTitle();
+  $self->p_findVotes();
+  $self->country( $self->tree->findvalue( $XPATH_COUNTRY ) );
+  $self->cover( $self->tree->findvalue( $XPATH_COVER ) );
+  $self->title( $self->tree->findvalue( $XPATH_TITLE ) );
 
   $self->tree->delete();
 }
@@ -403,12 +405,6 @@ private_method p_findRating => sub {
   $self->rating( trim($rating) );
 };
 
-private_method p_findTitle => sub {
-  my $self = shift;  
-  
-  $self->title( $self->tree->findnodes_as_strings( $XPATH_TITLE ) ); 
-};
-
 private_method p_findVotes => sub {
   my $self = shift;
   
@@ -417,15 +413,6 @@ private_method p_findVotes => sub {
   return if not defined $votes;
   $votes =~ s/\D//gi; 
   $self->votes( trim($votes) );
-};
-
-private_method p_findCountryAndCover => sub {
-  my $self = shift;
-  
-  $self->country( $self->tree->findvalue( $XPATH_COUNTRY ) );
-
-  $self->cover( $self->tree->findvalue( $XPATH_COVER ) );
-
 };
 
 private_method p_buildUrlMovie => sub {
