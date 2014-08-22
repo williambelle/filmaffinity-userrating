@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 use IO::All -utf8;
-use FilmAffinity::Utils;
+use FilmAffinity::Utils qw/data2tsv/;
 
 use Test::LongString;
 use Test::More tests => 2;

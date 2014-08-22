@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 use Encode;
-use FilmAffinity::Utils;
+use FilmAffinity::Utils qw/demoronize/;
 
 use Test::More tests => 9;
 

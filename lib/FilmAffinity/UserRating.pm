@@ -13,7 +13,7 @@ use HTML::TreeBuilder::XPath;
 use Moose;
 use MooseX::Privacy;
 
-use FilmAffinity::Utils;
+use FilmAffinity::Utils qw/buildRobot demoronize/;
 
 =head1 NAME
 

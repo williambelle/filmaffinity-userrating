@@ -17,10 +17,8 @@ Version 0.06
 
 our $VERSION = 0.06;
 
-require Exporter;
-
-our @ISA    = qw/Exporter/;
-our @EXPORT = qw/demoronize buildRobot data2tsv/;
+use base 'Exporter';
+our @EXPORT_OK = qw/demoronize buildRobot data2tsv/;
 
 =head1 EXPORT
 
