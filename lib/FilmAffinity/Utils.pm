@@ -36,24 +36,24 @@ sub demoronize {
   return $str unless defined $str;
 
   my $demoronizeReplaceMap = {
-    '\x{201A}|\x82'   => ',',   # 82, SINGLE LOW-9 QUOTATION MARK
-    '\x{201E}|\x84'   => ',,',  # 84, DOUBLE LOW-9 QUOTATION MARK
-    '\x{2026}|\x85'   => '...', # 85, HORIZONTAL ELLIPSIS
-    '\x{02C6}|\x88'   => '^',   # 88, MODIFIER LETTER CIRCUMFLEX ACCENT
-    '\x{2018}|\x91'   => '`',   # 91, LEFT SINGLE QUOTATION MARK
-    '\x{2019}|\x92'   => "'",   # 92, RIGHT SINGLE QUOTATION MARK
-    '\x{201C}|\x93'   => '"',   # 93, LEFT DOUBLE QUOTATION MARK
-    '\x{201D}|\x94'   => '"',   # 94, RIGHT DOUBLE QUOTATION MARK
-    '\x{2022}|\x95|•' => '*',   # 95, BULLET
-    '\x{2013}|\x96'   => '-',   # 96, EN DASH
-    '\x{2014}|\x97'   => '-',   # 97, EM DASH
-    '\x{2039}|\x8B'   => '<',   # 8B, SINGLE LEFT-POINTING ANGLE QUOTATION MARK
-    '\x{203A}|\x9B'   => '>',   # 9B, SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
+    q{\x{201A}|\x82}   => q{,},   # 82, SINGLE LOW-9 QUOTATION MARK
+    q{\x{201E}|\x84}   => q{,,},  # 84, DOUBLE LOW-9 QUOTATION MARK
+    q{\x{2026}|\x85}   => q{...}, # 85, HORIZONTAL ELLIPSIS
+    q{\x{02C6}|\x88}   => q{^},   # 88, MODIFIER LETTER CIRCUMFLEX ACCENT
+    q{\x{2018}|\x91}   => q{`},   # 91, LEFT SINGLE QUOTATION MARK
+    q{\x{2019}|\x92}   => q{'},   # 92, RIGHT SINGLE QUOTATION MARK
+    q{\x{201C}|\x93}   => q{"},   # 93, LEFT DOUBLE QUOTATION MARK
+    q{\x{201D}|\x94}   => q{"},   # 94, RIGHT DOUBLE QUOTATION MARK
+    q{\x{2022}|\x95|•} => q{*},   # 95, BULLET
+    q{\x{2013}|\x96}   => q{-},   # 96, EN DASH
+    q{\x{2014}|\x97}   => q{-},   # 97, EM DASH
+    q{\x{2039}|\x8B}   => q{<},   # 8B, SINGLE LEFT-POINTING ANGLE QUOTATION MARK
+    q{\x{203A}|\x9B}   => q{>},   # 9B, SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
   };
   
-  foreach my $replace ( keys( %{$demoronizeReplaceMap} ) ) {
+  foreach my $replace ( keys %{$demoronizeReplaceMap} ) {
       my $replacement = $demoronizeReplaceMap->{$replace};
-      $str =~ s/$replace/$replacement/g;
+      $str =~ s/$replace/$replacement/xmsg;
   }
   
   return $str;
