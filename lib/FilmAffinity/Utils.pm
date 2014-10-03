@@ -3,6 +3,7 @@ package FilmAffinity::Utils;
 use strict;
 use warnings;
 
+use Readonly;
 use LWP::RobotUA;
 
 =head1 NAME - FilmAffinity::Utils
@@ -19,6 +20,8 @@ our $VERSION = 0.06;
 
 use base 'Exporter';
 our @EXPORT_OK = qw/demoronize buildRobot data2tsv/;
+
+Readonly::Scalar my $SECONDES => 60;
 
 =head1 EXPORT
 
@@ -69,9 +72,9 @@ sub buildRobot {
   my ($delay) = shift;
 
   my $ua = LWP::RobotUA->new("FilmAffinity-Bot/$VERSION", 'me@foo.com');
-  $ua->timeout(60);
+  $ua->timeout($SECONDES);
   $ua->env_proxy;
-  $ua->delay($delay/60);
+  $ua->delay($delay/$SECONDES);
 
   return $ua;
 }

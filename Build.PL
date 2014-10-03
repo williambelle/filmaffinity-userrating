@@ -27,6 +27,7 @@ my $builder = Module::Build->new(
 		'Encode'                   => 2.57,
 		'JSON'                     => 2.90,
 		'List::Compare'            => 0.39,
+		'Readonly'                 => 2.00,
 	},
 	add_to_cleanup     => ['FilmAffinity-UserRating-*'],
 	create_makefile_pl => 'traditional',
