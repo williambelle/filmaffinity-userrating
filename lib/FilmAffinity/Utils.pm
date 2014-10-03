@@ -50,12 +50,12 @@ sub demoronize {
     q{\x{2039}|\x8B}   => q{<},   # 8B, SINGLE LEFT-POINTING ANGLE QUOTATION MARK
     q{\x{203A}|\x9B}   => q{>},   # 9B, SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
   };
-  
+
   foreach my $replace ( keys %{$demoronizeReplaceMap} ) {
       my $replacement = $demoronizeReplaceMap->{$replace};
       $str =~ s/$replace/$replacement/xmsg;
   }
-  
+
   return $str;
 }
 
@@ -67,13 +67,13 @@ Returns a LWP::RobotUA for web requests
 
 sub buildRobot {
   my ($delay) = shift;
-  
+
   my $ua = LWP::RobotUA->new("FilmAffinity-Bot/$VERSION", 'me@foo.com');
   $ua->timeout(60);
-  $ua->env_proxy;  
-  $ua->delay($delay/60); 
-  
-  return $ua; 
+  $ua->env_proxy;
+  $ua->delay($delay/60);
+
+  return $ua;
 }
 
 =head2 data2tsv
@@ -86,19 +86,19 @@ Returns a tsv string
 
 sub data2tsv {
   my ( $data ) = shift;
-  
+
   my $tsvString;
   foreach my $mov ( sort { p_sortByRatings($data) } keys %{$data}){
-    $tsvString .= $mov ."\t" . 
-                  $data->{$mov}{'title'} . "\t" . 
-                  $data->{$mov}{'rating'}."\n"; 
+    $tsvString .= $mov ."\t" .
+                  $data->{$mov}{'title'} . "\t" .
+                  $data->{$mov}{'rating'}."\n";
   }
-  
-  return $tsvString; 
+
+  return $tsvString;
 }
 
 sub p_sortByRatings {
-  my ($ref_movies) = @_;  
+  my ($ref_movies) = @_;
   return $ref_movies->{$b}{'rating'} <=> $ref_movies->{$a}{'rating'};
 }
 
