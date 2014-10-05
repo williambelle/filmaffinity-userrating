@@ -6,9 +6,9 @@ use warnings;
 use Readonly;
 use LWP::RobotUA;
 
-=head1 NAME - FilmAffinity::Utils
+=head1 NAME
 
-Utils for FilmAffinity
+FilmAffinity::Utils - Utils for FilmAffinity
 
 =head1 VERSION
 
@@ -18,12 +18,26 @@ Version 0.06
 
 our $VERSION = 0.06;
 
+=head1 SYNOPSIS
+
+  use FilmAffinity::Utils;
+
+  my $string = demoronize($string);
+  my $ua = buildRobot($delay);
+  my $tsv = data2tsv($data);
+  
+=head1 DESCRIPTION
+
+Several utilities functions
+
+=cut
+
 use base 'Exporter';
 our @EXPORT_OK = qw/demoronize buildRobot data2tsv/;
 
-Readonly::Scalar my $SECONDES => 60;
+Readonly::Scalar my $SECONDS => 60;
 
-=head1 EXPORT
+=head1 SUBROUTINES/METHODS
 
 =head2 demoronize
 
@@ -55,8 +69,8 @@ sub demoronize {
   };
 
   foreach my $replace ( keys %{$demoronizeReplaceMap} ) {
-      my $replacement = $demoronizeReplaceMap->{$replace};
-      $str =~ s/$replace/$replacement/xmsg;
+    my $replacement = $demoronizeReplaceMap->{$replace};
+    $str =~ s/$replace/$replacement/xmsg;
   }
 
   return $str;
@@ -71,10 +85,10 @@ Returns a LWP::RobotUA for web requests
 sub buildRobot {
   my ($delay) = shift;
 
-  my $ua = LWP::RobotUA->new("FilmAffinity-Bot/$VERSION", 'me@foo.com');
-  $ua->timeout($SECONDES);
+  my $ua = LWP::RobotUA->new( "FilmAffinity-Bot/$VERSION", 'me@foo.com' );
+  $ua->timeout($SECONDS);
   $ua->env_proxy;
-  $ua->delay($delay/$SECONDES);
+  $ua->delay( $delay / $SECONDS );
 
   return $ua;
 }
@@ -88,13 +102,12 @@ Returns a tsv string
 =cut
 
 sub data2tsv {
-  my ( $data ) = shift;
+  my ($data) = shift;
 
   my $tsvString;
-  foreach my $mov ( sort { p_sortByRatings($data) } keys %{$data}){
-    $tsvString .= $mov ."\t" .
-                  $data->{$mov}{'title'} . "\t" .
-                  $data->{$mov}{'rating'}."\n";
+  foreach my $mov ( sort { p_sortByRatings($data) } keys %{$data} ) {
+    $tsvString .= $mov . "\t" . $data->{$mov}{'title'} . "\t"
+      . $data->{$mov}{'rating'} . "\n";
   }
 
   return $tsvString;
@@ -109,7 +122,7 @@ sub p_sortByRatings {
 
 William Belle, C<< <william.belle at gmail.com> >>
 
-=head1 BUGS
+=head1 BUGS AND LIMITATIONS
 
 Please report any bugs or feature requests to C<bug-filmaffinity-userrating at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=FilmAffinity-UserRating>.  I will be notified, and then you'll
@@ -159,4 +172,4 @@ See http://dev.perl.org/licenses/ for more information.
 
 =cut
 
-1; # End of FilmAffinity::Utils
+1;    # End of FilmAffinity::Utils
