@@ -7,7 +7,7 @@ use Getopt::Long;
 use Pod::Usage;
 
 use IO::All -utf8;
-use FilmAffinity::Utils;
+use FilmAffinity::Utils qw/data2tsv/;;
 use FilmAffinity::UserRating;
 
 =head1 NAME - filmaffinity-get-ratings.pl
