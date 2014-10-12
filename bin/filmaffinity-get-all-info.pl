@@ -9,7 +9,7 @@ use Pod::Usage;
 use IO::All -utf8;
 use List::Compare;
 use FilmAffinity::Movie;
-use FilmAffinity::Utils;
+use FilmAffinity::Utils qw/data2tsv/;
 use FilmAffinity::UserRating;
 
 =head1 NAME - filmaffinity-get-all-info.pl
