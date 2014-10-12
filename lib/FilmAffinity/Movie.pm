@@ -5,6 +5,7 @@ use warnings;
 
 use JSON;
 use Encode;
+use Readonly;
 use Scalar::Util qw(looks_like_number);
 use Text::Trim;
 use LWP::RobotUA;
@@ -16,7 +17,7 @@ use MooseX::Privacy;
 
 use FilmAffinity::Utils qw/buildRobot/;
 
-=head1 NAME - FilmAffinity::Movie
+=head1 NAME
 
 FilmAffinity::Movie - Perl interface to FilmAffinity
 
@@ -34,7 +35,7 @@ Retrieve information about a filmaffinity movie
 
     use FilmAffinity::Movie;
 
-    my $movie = FilmAffinity::Movie->new( 
+    my $movie = FilmAffinity::Movie->new(
       id    => $movieID,
       delay => $delay || 5,
     );
@@ -47,7 +48,7 @@ Via the command-line program filmaffinity-get-movie-info.pl
 
 =head2 Overview
 
-FilmAffinity::Movie is a Perl interface to FilmAffinity. You can use 
+FilmAffinity::Movie is a Perl interface to FilmAffinity. You can use
 this module to retrieve information about a movie.
 
 =head2 Constructor
@@ -57,9 +58,9 @@ this module to retrieve information about a movie.
 =item new()
 
 Object's constructor. You should pass as parameter the movieID
- 
-    my $movie = FilmAffinity::Movie->new( id => '932476' ); 
-    
+
+    my $movie = FilmAffinity::Movie->new( id => '932476' );
+
 =back
 
 =head2 Options
@@ -70,13 +71,13 @@ Object's constructor. You should pass as parameter the movieID
 
 Set the minimum delay between requests to the server, in seconds.
 
-    my $parser = FilmAffinity::Movie->new( 
+    my $parser = FilmAffinity::Movie->new(
       userID => '932476',
       delay  => 20,
     );
-    
-By default, the delay is 5 seconds 
-    
+
+By default, the delay is 5 seconds
+
 =back
 
 =head1 ACCESSORS
@@ -189,17 +190,17 @@ has studio   => ( is => 'rw', isa => 'ArrayRef[Str]', );
 has producer => ( is => 'rw',  );
 
 
-has tree => ( 
+has tree => (
   is      => 'rw',
   isa     => 'HTML::TreeBuilder',
   traits  => [qw/Private/],
-); 
+);
 
-has ua => ( 
+has ua => (
   is      => 'rw',
   isa     => 'LWP::RobotUA',
   traits  => [qw/Private/],
-); 
+);
 
 my $MOVIE_URL     = 'http://www.filmaffinity.com/en/film';
 my $XPATH_TITLE   = '//h1[@id="main-title"]';
@@ -208,105 +209,109 @@ my $XPATH_VOTE    = '//div[@id="movie-count-rat"]/span';
 my $XPATH_COUNTRY = '//span[@id="country-img"]/img/@title';
 my $XPATH_COVER   = '//div[@id="movie-main-image-container"]/a/img/@src';
 
-my @JSON_FIELD = (
-  'id', 'title', 'year', 'synopsis', 'website', 'duration', 'cast' , 'director',
-  'composer', 'screenwriter', 'cinematographer', 'genre', 'topic', 'studio', 
-  'producer', 'country', 'cover', 'rating', 'votes', 'originaltitle',
+my @JSON_FIELD = qw(
+  id title year synopsis website duration cast director composer screenwriter
+  cinematographer genre topic studio producer country cover rating votes
+  originaltitle
 );
 
 my $FIELD = [
-  { 
-    accessor => 'originaltitle', 
-    faTag    => 'Original title', 
-  },
-  { 
-    accessor => 'year', 
-    faTag    => 'Year', 
-  },
-  { 
-    accessor => 'synopsis', 
-    faTag    => 'Synopsis / Plot', 
-  },
-  { 
-    accessor => 'website', 
-    faTag    => 'Official Site', 
-  },  
   {
-    accessor   => 'duration', 
-    faTag      => 'Running Time', 
-    cleanerSub => \&p_cleanDuration, 
+    accessor => 'originaltitle',
+    faTag    => 'Original title',
   },
-  { 
-    accessor   => 'cast', 
-    faTag      => 'Cast', 
-    cleanerSub => \&p_cleanPerson, 
+  {
+    accessor => 'year',
+    faTag    => 'Year',
   },
-  { 
-    accessor   => 'director', 
-    faTag      => 'Director',     
+  {
+    accessor => 'synopsis',
+    faTag    => 'Synopsis / Plot',
+  },
+  {
+    accessor => 'website',
+    faTag    => 'Official Site',
+  },
+  {
+    accessor   => 'duration',
+    faTag      => 'Running Time',
+    cleanerSub => \&p_cleanDuration,
+  },
+  {
+    accessor   => 'cast',
+    faTag      => 'Cast',
     cleanerSub => \&p_cleanPerson,
   },
-  { 
-    accessor   => 'composer', 
-    faTag      => 'Music',     
-    cleanerSub => \&p_cleanPerson,
-  },  
-  { 
-    accessor   => 'screenwriter', 
-    faTag      => 'Screenwriter',    
+  {
+    accessor   => 'director',
+    faTag      => 'Director',
     cleanerSub => \&p_cleanPerson,
   },
-  { 
-    accessor   => 'cinematographer', 
-    faTag      => 'Cinematography', 
+  {
+    accessor   => 'composer',
+    faTag      => 'Music',
     cleanerSub => \&p_cleanPerson,
   },
-  { 
-    accessor   => 'genre', 
-    faTag      => 'Genre', 
-    cleanerSub => \&p_cleanGenre, 
+  {
+    accessor   => 'screenwriter',
+    faTag      => 'Screenwriter',
+    cleanerSub => \&p_cleanPerson,
   },
-  { 
-    accessor   => 'topic', 
-    faTag      => 'Genre', 
-    cleanerSub => \&p_cleanGenre, 
-  }, 
-  { 
-    accessor   => 'studio', 
-    faTag      => 'Production Co.', 
+  {
+    accessor   => 'cinematographer',
+    faTag      => 'Cinematography',
+    cleanerSub => \&p_cleanPerson,
+  },
+  {
+    accessor   => 'genre',
+    faTag      => 'Genre',
+    cleanerSub => \&p_cleanGenre,
+  },
+  {
+    accessor   => 'topic',
+    faTag      => 'Genre',
+    cleanerSub => \&p_cleanGenre,
+  },
+  {
+    accessor   => 'studio',
+    faTag      => 'Production Co.',
     cleanerSub => \&p_cleanStudio,
   },
-  { 
-    accessor   => 'producer' , 
-    faTag      => 'Production Co.', 
-    cleanerSub => \&p_cleanStudio, 
+  {
+    accessor   => 'producer' ,
+    faTag      => 'Production Co.',
+    cleanerSub => \&p_cleanStudio,
   },
 ];
 
+Readonly my $SECONDS => 5;
+
 sub BUILD {
   my ($self, $args) = @_;
- 
-  $self->tree( HTML::TreeBuilder->new() );
-  $self->ua( buildRobot( $args->{delay} || 5 ) );
-} 
 
-=head1 METHODS
+  $self->tree( HTML::TreeBuilder->new() );
+  $self->ua( buildRobot( $args->{delay} || $SECONDS ) );
+  return;
+}
+
+=head1 SUBROUTINES/METHODS
 
 =head2 $movie->parse()
 
 This method will get the content of the filmaffinity webpage and retrieve
 all information about the movie
 
-=cut 
+=cut
 
 sub parse {
   my $self = shift;
-  
+
   my $content = $self->getContent();
   $self->parsePage($content);
+  return;
 }
 
-   
+
 =head2 $movie->getContent()
 
 This method will get the content of the filmaffinity webpage
@@ -315,7 +320,7 @@ This method will get the content of the filmaffinity webpage
 
 sub getContent {
   my ($self) = @_;
-  
+
   my $url = $self->p_buildUrlMovie($self->id);
 
   my $response = $self->ua->get($url);
@@ -326,14 +331,14 @@ sub getContent {
 
 =head2 $movie->parsePage($content)
 
-This method parses a page of filmaffinity that is available as 
-a single string in memory. 
+This method parses a page of filmaffinity that is available as
+a single string in memory.
 
-=cut  
-  
+=cut
+
 sub parsePage {
   my ($self, $content) = @_;
-  
+
   $content = decode('utf-8', $content);
   $self->tree->parse($content);
 
@@ -341,13 +346,14 @@ sub parsePage {
     $self->p_findField($data);
   }
 
-  $self->p_findRating(); 
+  $self->p_findRating();
   $self->p_findVotes();
   $self->country( $self->tree->findvalue( $XPATH_COUNTRY ) );
   $self->cover( $self->tree->findvalue( $XPATH_COVER ) );
   $self->title( $self->tree->findvalue( $XPATH_TITLE ) );
 
   $self->tree->delete();
+  return;
 }
 
 
@@ -356,38 +362,38 @@ sub parsePage {
 
 This method will export all movie informations in JSON format
 
-=cut 
+=cut
 
 sub toJSON {
   my $self = shift;
-  
+
   my %data;
   foreach my $field (@JSON_FIELD){
-    $data{$field} = $self->$field() if defined $self->$field(); 
+    $data{$field} = $self->$field() if defined $self->$field();
   };
-  
+
   return to_json(\%data, {pretty => 1});
 }
- 
+
 private_method p_findField => sub {
   my ( $self, $data ) = @_;
-  
+
   my @nodes = $self->tree->findnodes( '//dl[@class="movie-info"]/dt' );
   foreach my $node (@nodes){
     if ( trim( $node->as_text() ) eq $data->{faTag} ){
-      
+
       my $searched_node = $node->right();
-      
+
       my $accessor = $data->{accessor};
 
       my $value = trim( $searched_node->as_text() );
-      
-      next if $value eq '';
+
+      next if $value eq q{};
 
       if (defined $data->{cleanerSub}){
         $value = $data->{cleanerSub}($value, $accessor);
       }
-      
+
       next if not defined $value;
 
       $self->$accessor( $value );
@@ -398,7 +404,7 @@ private_method p_findField => sub {
 
 private_method p_findRating => sub {
   my $self = shift;
-    
+
   my $rating = $self->tree->findvalue( $XPATH_RATING );
 
   return if not defined $rating;
@@ -407,79 +413,79 @@ private_method p_findRating => sub {
 
 private_method p_findVotes => sub {
   my $self = shift;
-  
+
   my $votes = $self->tree->findvalue( $XPATH_VOTE );
-  
+
   return if not defined $votes;
-  $votes =~ s/\D//gi; 
+  $votes =~ s/\D//gixms;
   $self->votes( trim($votes) );
 };
 
 private_method p_buildUrlMovie => sub {
   my ($self, $id) = @_;
-    
+
   return $MOVIE_URL.$id.'.html';
 };
 
 private_method p_removeTextBetweenParenthesis => sub {
   my $content = shift;
-  
-  $content =~ s/\(.*\)//g;
+
+  $content =~ s/[(].*[)]//gxms;
   return $content;
 };
 
 private_method p_cleanDuration => sub {
   my $value = shift;
-  $value =~ s/min\.//gi;
+  $value =~ s/min[.]//gixms;
   $value = trim($value);
-  
+
   if ( looks_like_number($value) ){
-    return $value    
-  } 
+    return $value;
+  }
   return;
 };
 
 private_method p_cleanPerson => sub {
   my $value = shift;
-     
-  my @persons = split(',', $value);
-  @persons = map (trim (p_removeTextBetweenParenthesis($_) ), @persons);
+
+  my @persons = split m/,/xms, $value;
+  @persons = map {trim (p_removeTextBetweenParenthesis($_) )} @persons;
   return \@persons;
 };
 
 private_method p_cleanGenre => sub {
   my ($value, $field) = @_;
-  
+
   my $pos = $field eq 'genre' ? 0 : 1;
-  my @list = split(/\|/, $value);
-  
+  my @list = split m/[|]/xms, $value;
+
   if ( defined $list[$pos]){
-    my @genres = trim ( split(/\./, $list[$pos] ) );  
+    my @genres = trim ( split m/[.]/xms, $list[$pos] );
     return \@genres;
-  }   
+  }
   return;
 };
 
 private_method p_cleanStudio => sub {
   my ($value, $field) = @_;
-  
+
   my $pos = $field eq 'studio' ? 0 : 1;
-  my @list = split(/\. Producer: /, $value);
-  
+  my @list = split m/[.]\sProducer: /xms, $value;
+
   my @studio = ();
   if (not defined $list[$pos]){
     return;
   } else {
-    @studio = trim ( split(/ \/ /, $list[$pos] ) );
-    return \@studio;  
-  } 
+    @studio = trim ( split m{ / }xms, $list[$pos] );
+    return \@studio;
+  }
 };
 
 =head1 AUTHOR
 
 William Belle, C<< <william.belle at gmail.com> >>
 
-=head1 BUGS
+=head1 BUGS AND LIMITATIONS
 
 Please report any bugs or feature requests to C<bug-filmaffinity-userrating at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=FilmAffinity-UserRating>.  I will be notified, and then you'll
