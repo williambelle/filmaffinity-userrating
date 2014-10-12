@@ -14,7 +14,7 @@ use FilmAffinity::Movie;
 use Test::JSON;
 use Test::MockObject::Extends;
 use Test::LongString;
-use Test::More tests => 147;
+use Test::More tests => 168;
 
 my @listMovies = File::Find::Rule->file()->name('*.html')->in(
   't/resources/filmaffinity-local-movie'

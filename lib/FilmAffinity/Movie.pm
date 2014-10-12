@@ -407,7 +407,7 @@ private_method p_findRating => sub {
 
   my $rating = $self->tree->findvalue( $XPATH_RATING );
 
-  return if not defined $rating;
+  return if not defined $rating or $rating eq q{};
   $self->rating( trim($rating) );
 };
 
@@ -416,7 +416,7 @@ private_method p_findVotes => sub {
 
   my $votes = $self->tree->findvalue( $XPATH_VOTE );
 
-  return if not defined $votes;
+  return if not defined $votes or $votes eq q{};
   $votes =~ s/\D//gixms;
   $self->votes( trim($votes) );
 };
