@@ -1,4 +1,4 @@
-FilmAffinity-UserRating
+FilmAffinity-UserRating [![Build Status](https://travis-ci.org/williambelle/filmaffinity-userrating.svg?branch=master)](https://travis-ci.org/williambelle/filmaffinity-userrating) 
 =======================
 
 Perl interface to FilmAffinity
