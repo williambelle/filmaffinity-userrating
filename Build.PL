@@ -28,6 +28,7 @@ my $builder = Module::Build->new(
 		'JSON'                     => 2.90,
 		'List::Compare'            => 0.39,
 		'Readonly'                 => 2.00,
+		'File::Copy::Recursive '   => 0.38,
 	},
 	add_to_cleanup     => ['FilmAffinity-UserRating-*'],
 	create_makefile_pl => 'traditional',
