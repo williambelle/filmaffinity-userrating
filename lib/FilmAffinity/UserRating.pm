@@ -122,9 +122,9 @@ has ua => (
 
 Readonly my $SECONDS => 5;
 my $RATING_URL   = 'http://www.filmaffinity.com/en/userratings.php?orderby=2&';
-my $XPATH_ID     = '//table[@class="amovie_info"]/tr/child::*[1]/div/@data-movie-id';
+my $XPATH_ID     = '//div[@class="user-ratings-movie-item"]/div/@data-movie-id';
 my $XPATH_TITLE  = '//div[@class="mc-title"]/a';
-my $XPATH_RATING = '//table[@class="amovie_info"]/tr/child::*[2]/div/child::*[1]';
+my $XPATH_RATING = '//div[@class="ur-mr-rat"]';
 
 sub BUILD {
   my ($self, $args) = @_;
@@ -212,7 +212,7 @@ private_method p_buildMovieInfo => sub {
 private_method p_isNextPage => sub {
   my ($self, $content) = @_;
 
-  if ($content =~ m/>&gt;&gt;<\/a><\/div><\/div><\/td>/xms){
+  if ($content =~ m/>&gt;&gt;<\/a><\/div><\/div>/xms){
     return 1;
   }
   return 0;

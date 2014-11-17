@@ -1,26 +1,30 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Ratings by JohnSmith - FilmAffinity</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta charset="UTF-8">
 <meta name="description" content="Filmaffinity.com AKA movieaffinity.com is a website that finds people who have the same taste in movies as you, so you can consult their ratings for any movie you want to see on the Theater, TV, DVD">
 <meta property="og:site_name" content="FilmAffinity">
 <link href="/style/im.1351942287.css" rel="stylesheet" type="text/css">
-<link href="/style/share.1397644499.css" rel="stylesheet" type="text/css">
-<link href="/style/main3.1406704390.css" rel="stylesheet" type="text/css">
+<link href="/style/share.1415955022.css" rel="stylesheet" type="text/css">
+<link href="/style/movies-list.1415980207.css" rel="stylesheet" type="text/css">
+<link href="/style/main3.1415955649.css" rel="stylesheet" type="text/css">
 <link href="/style/history.1366804355.css" rel="stylesheet" type="text/css">
-<link href="/style/moviecards3.1366704004.css" rel="stylesheet" type="text/css">
-<link href="/style/jquery/fa-ui-theme/jquery-ui-1.10.3.custom.min.1389691996.css" rel="stylesheet" type="text/css">
+<link href="/style/moviecards3.1415953635.css" rel="stylesheet" type="text/css">
+<link href="/style/fa-awesome.1415364597.css" rel="stylesheet" type="text/css">
+<link href="/style/jquery/fa-ui-theme/jquery-ui.min.1414572832.css" rel="stylesheet" type="text/css">
+<link href="/style/jquery/fa-ui-theme/jquery-ui.structure.min.1414572832.css" rel="stylesheet" type="text/css">
+<link href="/style/jquery/fa-ui-theme/jquery-ui.theme.min.1414572833.css" rel="stylesheet" type="text/css">
 <link href="/style/friends.1351942286.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="/js/local_en.1351941950.js"></script>
+<script type="text/javascript" src="/js/local_en.1416237715.js"></script>
 <script type="text/javascript" src="/js/jquery/jquery-1.10.2.min.1389697507.js"></script>
 <script type="text/javascript" src="/js/jquery/jquery-migrate-1.2.1.1389692044.js"></script>
-<script type="text/javascript" src="/js/jquery/ui/jquery-ui-1.10.3.custom.min.1381152587.js"></script>
+<script type="text/javascript" src="/js/jquery/ui/jquery-ui-1.11.1.custom.min.1414572627.js"></script>
 <script type="text/javascript" src="/js/jquery/plugin/jquery.cookie.1351941968.js"></script>
-<script type="text/javascript" src="/js/jquery/plugin/info-cookies.1398769252.js"></script>
-<script type="text/javascript" src="/js/main.1400759396.js"></script>
+<script type="text/javascript" src="/js/jquery/plugin/info-cookies.1410251788.js"></script>
+<script type="text/javascript" src="/js/main.1416237721.js"></script>
 <script type="text/javascript" src="/js/z-index-fix.1392897259.js"></script>
-<script type="text/javascript" src="/js/fa-lists-tip.1395414240.js"></script>
+<script type="text/javascript" src="/js/fa-lists-tip.1415969626.js"></script>
 <script type="text/javascript" src="/js/jquery/plugin/mini-friends.1389777364.js"></script>
 <script type="text/javascript" src="/js/jquery/plugin/friends_translate_en.1405667811.js"></script>
 </head>
@@ -57,13 +61,15 @@
         <ul id="awardsmenu">
 
                 <li><a href="/en/main.html">Home</a></li><li class="sep">|</li>
-                <li><a href="/en/topgen.php?nodoc=1">TOP Filmaffinity</a></li><li class="sep">|</li>
-                <li><a href="/en/topcat.php?id=new_th_us">TOP Now Playing</a></li><li class="sep">|</li>
+                <li><a href="/en/cat_new_th_us.html">Now Playing</a></li><li class="sep">|</li>
+                <li><a href="/en/topgen.php?nodoc=1">TOP FA</a></li><li class="sep">|</li>
+                <li><a href="/en/topcat.php?id=new_th_us">TOP Now</a></li><li class="sep">|</li>
+                <li><a href="/en/boxoffice.php">Box Office</a></li><li class="sep">|</li>
                 <li><a href="/en/imlost.php">Tutorial</a></li><li class="sep">|</li>
                 <li><a href="/en/tours.php">Start Voting!</a></li><li class="sep">|</li>
-                <li><a href="/en/awards.php?award_id=emmy&amp;year=2014">Emmy Awards 2014 (nominees)</a></li><li class="sep">|</li>
                 <li><a href="/en/best_2013.php">Best of 2013</a></li><li class="sep">|</li>
-                <li><a href="/en/awards.php?award_id=academy_awards&amp;year=2014">Academy Awards</a></li>
+                <li><a href="/en/awards.php?award_id=european&year=2014">European Film Awards (n.)</a></li><li class="sep">|</li>
+                <li><a href="/en/oscar_data.php">Oscars</a></li>
 
         </ul>
 
@@ -80,15 +86,28 @@
 
 
             <div id="top-ad" style="min-height: 90px;">
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <ins class="adsbygoogle"
-                     style="display:inline-block;width:970px;height:90px"
-                     data-ad-client="ca-pub-9828150778409198"
-                     data-ad-slot="1850063228"></ins>
-                <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                <div class="alignleft">
+                    <script type='text/javascript'>
+                     amzn_assoc_ad_type = 'banner';
+                     amzn_assoc_tracking_id = 'filmaffinity-20';
+                     amzn_assoc_marketplace = 'amazon';
+                     amzn_assoc_region = 'US';
+                     amzn_assoc_placement = 'assoc_banner_placement_default';
+                     amzn_assoc_linkid = 'QRG7RLSCYBQBGIC5';
+                     amzn_assoc_campaigns = 'vdgtrade';
+                     amzn_assoc_p = '48';
+                     amzn_assoc_banner_type = 'category';
+                     amzn_assoc_isresponsive = 'false';
+                     amzn_assoc_banner_id = '051SWRGN9P1MZR321RG2';
+                     amzn_assoc_width = '728';
+                     amzn_assoc_height = '90';
+                    </script>
+                    <script src='//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1'></script>
+                </div>
+
             </div>
+
+
 </div>
 
 <div id="info-cookie">
@@ -132,11 +151,7 @@
       </td>
       <td>
         <div id="mt-content-cell">
-<h1 id="main-title">Ratings by JohnSmith</h1><style>
-
-</style>
-<br>
-    <div id="templates" style="display:none">
+<h1 id="main-title">Ratings by JohnSmith</h1>    <div id="templates" style="display:none">
 
         <div id="add-friend-dialog" title="Add Friend">
             <div class="form-dialog">
@@ -256,7 +271,7 @@
     <div id="stats">
         <dl>
             <dt id="avg_votes" style="color:#990000;">6.4</dt><dd style="font-size:13px;"><strong>Average Rating</strong></dd>
-            <dt>1402</dt><dd><a href="/en/userratings.php?user_id=192076">Rated Movies</a></dd>
+            <dt>1441</dt><dd><a href="/en/userratings.php?user_id=192076">Rated Movies</a></dd>
 
                         <dt>4</dt><dd><a href="/en/userlists.php?user_id=192076">Lists</a></dd>
                     </dl>
@@ -287,12 +302,11 @@
     </ul>
   </div>
 </div>
-<table width="100%" border="0" cellpadding="3" cellspacing="1">
-    <tr>
-        <td align="left">Page <b>47</b> of <b>47</b></td>
+<div class="user-ratings-info-top">
+	<div class="float-left">
+		Page <b>49</b> of <b>49</b>	</div>
         <form method="get" >
         <input type="hidden" name="user_id" value="192076" />
-        <td colspan="2" align="right">
             <b>List by</b>
                 <select name="orderby" onchange="this.form.submit()">
                     <option value="0" >Rating</option>
@@ -305,629 +319,48 @@
                     <option value="5" >Country + Rating</option>
                     <option value="6" >Country + Year</option>
                 </select>
-        </td>
         </form>
-    </tr>
-    <tr>
-        <td id="upper_anchor" class="imthnav" style="text-align:left; width:33%; margin-top:4px" align="left" width:100%;>
+</div>
+
+        <div id="upper_anchor" class="go-down">
             <a href="#bottom_anchor">Go to bottom of page</a>
-        </td>
-    </tr>
-    <tr>
-        <td id=top_pager colspan="2" align="center"><div class="pager"><div class="pager"><a href="userratings.php?user_id=192076&amp;p=46&amp;orderby=2">&lt;&lt;</a> <a href="userratings.php?user_id=192076&amp;p=1&amp;orderby=2">1</a> <a href="userratings.php?user_id=192076&amp;p=20&amp;orderby=2">20</a> <a href="userratings.php?user_id=192076&amp;p=30&amp;orderby=2">30</a> <a href="userratings.php?user_id=192076&amp;p=40&amp;orderby=2">40</a> <a href="userratings.php?user_id=192076&amp;p=44&amp;orderby=2">44</a> <a href="userratings.php?user_id=192076&amp;p=45&amp;orderby=2">45</a> <a href="userratings.php?user_id=192076&amp;p=46&amp;orderby=2">46</a> <span class="current">47</span></div></div></td>
-    </tr>
-</table>
+        </div>
+<div class="pager"><div class="pager"><a href="/en/userratings.php?user_id=192076&amp;p=48&amp;orderby=2">&lt;&lt;</a> <a href="/en/userratings.php?user_id=192076&amp;p=1&amp;orderby=2">1</a> <a href="/en/userratings.php?user_id=192076&amp;p=20&amp;orderby=2">20</a> <a href="/en/userratings.php?user_id=192076&amp;p=30&amp;orderby=2">30</a> <a href="/en/userratings.php?user_id=192076&amp;p=40&amp;orderby=2">40</a> <a href="/en/userratings.php?user_id=192076&amp;p=46&amp;orderby=2">46</a> <a href="/en/userratings.php?user_id=192076&amp;p=47&amp;orderby=2">47</a> <a href="/en/userratings.php?user_id=192076&amp;p=48&amp;orderby=2">48</a> <span class="current">49</span></div></div>
 
-
-
-<table class="amovies_table_cont" style="width:100%"><tr><td>
-
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="756027">
+        
+<div  class="user-ratings-wrapper"  >
+	
+	<div class="user-ratings-movie fa-shadow">
+		<div class="user-ratings-movie-item">
+                <div class="movie-card movie-card-0" data-movie-id="326341">
     <div class="mc-poster">
-        <a href="/en/film756027.html"><img src="http://pics.filmaffinity.com/X3_X_Men_3_The_Last_Stand-756027-small.jpg" border="0"></a>
+        <a href="/en/film326341.html"><img src="http://pics.filmaffinity.com/on_Flux-326341-medium.jpg" border="0"></a>
     </div>
     <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film756027.html">X3 (X-Men 3: The Last Stand)</a>  (2006)   <img src="/imgs/countries/US.jpg" title="United States"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Brett+Ratner">Brett Ratner</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Hugh+Jackman">Hugh Jackman</a>, <a href="/en/search.php?stype=cast&amp;stext=Patrick+Stewart"> Patrick Stewart</a>, <a href="/en/search.php?stype=cast&amp;stext=Ian+McKellen"> Ian McKellen</a>, <a href="/en/search.php?stype=cast&amp;stext=Halle+Berry"> Halle Berry</a>, <a href="/en/search.php?stype=cast&amp;stext=Famke+Janssen"> Famke Janssen</a>, <a href="/en/search.php?stype=cast&amp;stext=Anna+Paquin"> Anna Paquin</a>, <a href="/en/search.php?stype=cast&amp;stext=Rebecca+Romijn-Stamos"> Rebecca Romijn-Stamos</a>, <a href="/en/search.php?stype=cast&amp;stext=Kelsey+Grammer"> Kelsey Grammer</a>, <a href="/en/search.php?stype=cast&amp;stext=Vinnie+Jones"> Vinnie Jones</a>, <a href="/en/search.php?stype=cast&amp;stext=James+Marsden"> James Marsden</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/756027.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">7</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/7_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Good</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="972864">
-    <div class="mc-poster">
-        <a href="/en/film972864.html"><img src="http://pics.filmaffinity.com/xXx2_State_of_the_Union-972864-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film972864.html">xXx2: State of the Union</a>  (2005)   <img src="/imgs/countries/US.jpg" title="United States"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Lee+Tamahori">Lee Tamahori</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Ice+Cube">Ice Cube</a>, <a href="/en/search.php?stype=cast&amp;stext=Samuel+L.+Jackson"> Samuel L. Jackson</a>, <a href="/en/search.php?stype=cast&amp;stext=Willem+Dafoe"> Willem Dafoe</a>, <a href="/en/search.php?stype=cast&amp;stext=Scott+Speedman"> Scott Speedman</a>, <a href="/en/search.php?stype=cast&amp;stext=Peter+Strauss"> Peter Strauss</a>, <a href="/en/search.php?stype=cast&amp;stext=Michael+Roof"> Michael Roof</a>, <a href="/en/search.php?stype=cast&amp;stext=Zu%F1%ED+Mabrey"> Zuñí Mabrey</a>, <a href="/en/search.php?stype=cast&amp;stext=Xzibit"> Xzibit</a>, <a href="/en/search.php?stype=cast&amp;stext=Nona+Gaye"> Nona Gaye</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/972864.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">5</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/5_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Decent</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="273575">
-    <div class="mc-poster">
-        <a href="/en/film273575.html"><img src="http://pics.filmaffinity.com/Yamakasi-273575-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film273575.html">Yamakasi</a>  (2001)   <img src="/imgs/countries/FR.jpg" title="France"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Ariel+Zeitoun">Ariel Zeitoun</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Maher+Kamoun">Maher Kamoun</a>, <a href="/en/search.php?stype=cast&amp;stext=Bruno+Flender"> Bruno Flender</a>, <a href="/en/search.php?stype=cast&amp;stext=Afida+Tahri"> Afida Tahri</a>, <a href="/en/search.php?stype=cast&amp;stext=Amel+Djemel"> Amel Djemel</a>, <a href="/en/search.php?stype=cast&amp;stext=Abdelkrim+Bahloul"> Abdelkrim Bahloul</a>, <a href="/en/search.php?stype=cast&amp;stext=Frederic+Pellegay"> Frederic Pellegay</a>, <a href="/en/search.php?stype=cast&amp;stext=Pascal+Liger"> Pascal Liger</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/273575.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">5</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/5_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Decent</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="418633">
-    <div class="mc-poster">
-        <a href="/en/film418633.html"><img src="http://pics.filmaffinity.com/Yes_Man-418633-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film418633.html">Yes Man</a>  (2008)   <img src="/imgs/countries/US.jpg" title="United States"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Peyton+Reed">Peyton Reed</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Jim+Carrey">Jim Carrey</a>, <a href="/en/search.php?stype=cast&amp;stext=Zooey+Deschanel"> Zooey Deschanel</a>, <a href="/en/search.php?stype=cast&amp;stext=Bradley+Cooper"> Bradley Cooper</a>, <a href="/en/search.php?stype=cast&amp;stext=Terence+Stamp"> Terence Stamp</a>, <a href="/en/search.php?stype=cast&amp;stext=Fionnula+Flanagan"> Fionnula Flanagan</a>, <a href="/en/search.php?stype=cast&amp;stext=Molly+Sims"> Molly Sims</a>, <a href="/en/search.php?stype=cast&amp;stext=Danny+Masterson"> Danny Masterson</a>, <a href="/en/search.php?stype=cast&amp;stext=John+Michael+Higgins"> John Michael Higgins</a>, <a href="/en/search.php?stype=cast&amp;stext=Rhys+Darby"> Rhys Darby</a>, <a href="/en/search.php?stype=cast&amp;stext=Sasha+Alexander"> Sasha Alexander</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/418633.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">7</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/7_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Good</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="928963">
-    <div class="mc-poster">
-        <a href="/en/film928963.html"><img src="http://pics.filmaffinity.com/Yo_Yo_Girl_Cop-928963-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film928963.html">Yo-Yo Girl Cop</a>  (2006)   <img src="/imgs/countries/JP.jpg" title="Japan"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Kenta+Fukasaku">Kenta Fukasaku</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Aya+Matsuura">Aya Matsuura</a>, <a href="/en/search.php?stype=cast&amp;stext=Rika+Ishikawa"> Rika Ishikawa</a>, <a href="/en/search.php?stype=cast&amp;stext=Shunsuke+Kubozuka"> Shunsuke Kubozuka</a>, <a href="/en/search.php?stype=cast&amp;stext=Erika+Miyoshi"> Erika Miyoshi</a>, <a href="/en/search.php?stype=cast&amp;stext=Hiroyuki+Nagato"> Hiroyuki Nagato</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/928963.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">6</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/6_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Interesting</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="382893">
-    <div class="mc-poster">
-        <a href="/en/film382893.html"><img src="http://pics.filmaffinity.com/Yogen_Premonition-382893-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film382893.html">Yogen (Premonition)</a>  (2004)   <img src="/imgs/countries/JP.jpg" title="Japan"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Norio+Tsuruta">Norio Tsuruta</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Hiroshi+Mikami">Hiroshi Mikami</a>, <a href="/en/search.php?stype=cast&amp;stext=Noriko+Sakai"> Noriko Sakai</a>, <a href="/en/search.php?stype=cast&amp;stext=Maki+Horikita"> Maki Horikita</a>, <a href="/en/search.php?stype=cast&amp;stext=Mayumi+Ono"> Mayumi Ono</a>, <a href="/en/search.php?stype=cast&amp;stext=Kei+Yamamoto"> Kei Yamamoto</a>, <a href="/en/search.php?stype=cast&amp;stext=Kazuko+Yoshiyuki"> Kazuko Yoshiyuki</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/382893.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">5</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/5_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Decent</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="521044">
-    <div class="mc-poster">
-        <a href="/en/film521044.html"><img src="http://pics.filmaffinity.com/You_Don_t_Mess_With_the_Zohan-521044-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film521044.html">You Don't Mess With the Zohan</a>  (2008)   <img src="/imgs/countries/US.jpg" title="United States"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Dennis+Dugan">Dennis Dugan</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Adam+Sandler">Adam Sandler</a>, <a href="/en/search.php?stype=cast&amp;stext=John+Turturro"> John Turturro</a>, <a href="/en/search.php?stype=cast&amp;stext=Rob+Schneider"> Rob Schneider</a>, <a href="/en/search.php?stype=cast&amp;stext=Emmanuelle+Chriqui"> Emmanuelle Chriqui</a>, <a href="/en/search.php?stype=cast&amp;stext=Nick+Swardson"> Nick Swardson</a>, <a href="/en/search.php?stype=cast&amp;stext=Lainie+Kazan"> Lainie Kazan</a>, <a href="/en/search.php?stype=cast&amp;stext=Charlotte+Rae"> Charlotte Rae</a>, <a href="/en/search.php?stype=cast&amp;stext=Ido+Mosseri"> Ido Mosseri</a>, <a href="/en/search.php?stype=cast&amp;stext=Chris+Rock"> Chris Rock</a>, <a href="/en/search.php?stype=cast&amp;stext=Mariah+Carey"> Mariah Carey</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/521044.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">6</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/6_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Interesting</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="467018">
-    <div class="mc-poster">
-        <a href="/en/film467018.html"><img src="http://pics.filmaffinity.com/You_Me_Dupree-467018-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film467018.html">You, Me &amp; Dupree</a>  (2006)   <img src="/imgs/countries/US.jpg" title="United States"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Anthony+Russo">Anthony Russo</a>, <a href="/en/search.php?stype=director&amp;stext=Joe+Russo"> Joe Russo</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Owen+Wilson">Owen Wilson</a>, <a href="/en/search.php?stype=cast&amp;stext=Kate+Hudson"> Kate Hudson</a>, <a href="/en/search.php?stype=cast&amp;stext=Michael+Douglas"> Michael Douglas</a>, <a href="/en/search.php?stype=cast&amp;stext=Matt+Dillon"> Matt Dillon</a>, <a href="/en/search.php?stype=cast&amp;stext=Seth+Rogen"> Seth Rogen</a>, <a href="/en/search.php?stype=cast&amp;stext=Amanda+Detmer"> Amanda Detmer</a>, <a href="/en/search.php?stype=cast&amp;stext=Todd+Stashwick"> Todd Stashwick</a>, <a href="/en/search.php?stype=cast&amp;stext=Harry+Dean+Stanton"> Harry Dean Stanton</a>, <a href="/en/search.php?stype=cast&amp;stext=Lance+Armstrong"> Lance Armstrong</a>, <a href="/en/search.php?stype=cast&amp;stext=Tasha+Smith"> Tasha Smith</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/467018.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">6</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/6_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Interesting</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="461152">
-    <div class="mc-poster">
-        <a href="/en/film461152.html"><img src="http://pics.filmaffinity.com/Young_Adult-461152-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film461152.html">Young Adult</a>  (2011)   <img src="/imgs/countries/US.jpg" title="United States"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Jason+Reitman">Jason Reitman</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Charlize+Theron">Charlize Theron</a>, <a href="/en/search.php?stype=cast&amp;stext=Patton+Oswalt"> Patton Oswalt</a>, <a href="/en/search.php?stype=cast&amp;stext=Patrick+Wilson"> Patrick Wilson</a>, <a href="/en/search.php?stype=cast&amp;stext=Elizabeth+Reaser"> Elizabeth Reaser</a>, <a href="/en/search.php?stype=cast&amp;stext=Collette+Wolfe"> Collette Wolfe</a>, <a href="/en/search.php?stype=cast&amp;stext=Jill+Eikenberry"> Jill Eikenberry</a>, <a href="/en/search.php?stype=cast&amp;stext=Richard+Bekins"> Richard Bekins</a>, <a href="/en/search.php?stype=cast&amp;stext=Mary+Beth+Hurt"> Mary Beth Hurt</a>, <a href="/en/search.php?stype=cast&amp;stext=Kate+Nowlin"> Kate Nowlin</a>, <a href="/en/search.php?stype=cast&amp;stext=Jenny+Dare+Paulin"> Jenny Dare Paulin</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/461152.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">6</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/6_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Interesting</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="535377">
-    <div class="mc-poster">
-        <a href="/en/film535377.html"><img src="http://pics.filmaffinity.com/Your_Highness-535377-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film535377.html">Your Highness</a>  (2011)   <img src="/imgs/countries/US.jpg" title="United States"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=David+Gordon+Green">David Gordon Green</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Danny+McBride">Danny McBride</a>, <a href="/en/search.php?stype=cast&amp;stext=James+Franco"> James Franco</a>, <a href="/en/search.php?stype=cast&amp;stext=Rasmus+Hardiker"> Rasmus Hardiker</a>, <a href="/en/search.php?stype=cast&amp;stext=Natalie+Portman"> Natalie Portman</a>, <a href="/en/search.php?stype=cast&amp;stext=Toby+Jones"> Toby Jones</a>, <a href="/en/search.php?stype=cast&amp;stext=Justin+Theroux"> Justin Theroux</a>, <a href="/en/search.php?stype=cast&amp;stext=Zooey+Deschanel"> Zooey Deschanel</a>, <a href="/en/search.php?stype=cast&amp;stext=Charles+Dance"> Charles Dance</a>, <a href="/en/search.php?stype=cast&amp;stext=Damian+Lewis"> Damian Lewis</a>, <a href="/en/search.php?stype=cast&amp;stext=Simon+Farnaby"> Simon Farnaby</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/535377.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">5</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/5_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Decent</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="422555">
-    <div class="mc-poster">
-        <a href="/en/film422555.html"><img src="http://pics.filmaffinity.com/Youth_in_Revolt-422555-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film422555.html">Youth in Revolt</a>  (2009)   <img src="/imgs/countries/US.jpg" title="United States"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Miguel+Arteta">Miguel Arteta</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Michael+Cera">Michael Cera</a>, <a href="/en/search.php?stype=cast&amp;stext=Portia+Doubleday"> Portia Doubleday</a>, <a href="/en/search.php?stype=cast&amp;stext=Zach+Galifianakis"> Zach Galifianakis</a>, <a href="/en/search.php?stype=cast&amp;stext=Justin+Long"> Justin Long</a>, <a href="/en/search.php?stype=cast&amp;stext=Steve+Buscemi"> Steve Buscemi</a>, <a href="/en/search.php?stype=cast&amp;stext=Ray+Liotta"> Ray Liotta</a>, <a href="/en/search.php?stype=cast&amp;stext=Jean+Smart"> Jean Smart</a>, <a href="/en/search.php?stype=cast&amp;stext=Rooney+Mara"> Rooney Mara</a>, <a href="/en/search.php?stype=cast&amp;stext=Ari+Graynor"> Ari Graynor</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/422555.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">5</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/5_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Decent</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="624364">
-    <div class="mc-poster">
-        <a href="/en/film624364.html"><img src="http://pics.filmaffinity.com/Zack_and_Miri_Make_a_Porno-624364-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film624364.html">Zack and Miri Make a Porno</a>  (2008)   <img src="/imgs/countries/US.jpg" title="United States"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Kevin+Smith">Kevin Smith</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Seth+Rogen">Seth Rogen</a>, <a href="/en/search.php?stype=cast&amp;stext=Elizabeth+Banks"> Elizabeth Banks</a>, <a href="/en/search.php?stype=cast&amp;stext=Jason+Mewes"> Jason Mewes</a>, <a href="/en/search.php?stype=cast&amp;stext=Gerry+Bednob"> Gerry Bednob</a>, <a href="/en/search.php?stype=cast&amp;stext=Traci+Lords"> Traci Lords</a>, <a href="/en/search.php?stype=cast&amp;stext=Katie+Morgan"> Katie Morgan</a>, <a href="/en/search.php?stype=cast&amp;stext=Craig+Robinson"> Craig Robinson</a>, <a href="/en/search.php?stype=cast&amp;stext=Tom+Savini"> Tom Savini</a>, <a href="/en/search.php?stype=cast&amp;stext=Jeff+Anderson"> Jeff Anderson</a>, <a href="/en/search.php?stype=cast&amp;stext=Brandon+Routh"> Brandon Routh</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/624364.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">6</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/6_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Interesting</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="842694">
-    <div class="mc-poster">
-        <a href="/en/film842694.html"><img src="http://pics.filmaffinity.com/Zardoz-842694-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film842694.html">Zardoz</a>  (1974)   <img src="/imgs/countries/GB.jpg" title="United Kingdom"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=John+Boorman">John Boorman</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Sean+Connery">Sean Connery</a>, <a href="/en/search.php?stype=cast&amp;stext=Charlotte+Rampling"> Charlotte Rampling</a>, <a href="/en/search.php?stype=cast&amp;stext=Sara+Kestelman"> Sara Kestelman</a>, <a href="/en/search.php?stype=cast&amp;stext=Sally+Anne+Newton"> Sally Anne Newton</a>, <a href="/en/search.php?stype=cast&amp;stext=John+Alderton"> John Alderton</a>, <a href="/en/search.php?stype=cast&amp;stext=Niall+Buggy"> Niall Buggy</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/842694.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">6</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/6_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Interesting</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="969918">
-    <div class="mc-poster">
-        <a href="/en/film969918.html"><img src="http://pics.filmaffinity.com/Zathura-969918-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film969918.html">Zathura</a>  (2005)   <img src="/imgs/countries/US.jpg" title="United States"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Jon+Favreau">Jon Favreau</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Tim+Robbins">Tim Robbins</a>, <a href="/en/search.php?stype=cast&amp;stext=Josh+Hutcherson"> Josh Hutcherson</a>, <a href="/en/search.php?stype=cast&amp;stext=Jonah+Bobo"> Jonah Bobo</a>, <a href="/en/search.php?stype=cast&amp;stext=Dax+Shepard"> Dax Shepard</a>, <a href="/en/search.php?stype=cast&amp;stext=Kristen+Stewart"> Kristen Stewart</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/969918.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">6</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/6_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Interesting</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="961277">
-    <div class="mc-poster">
-        <a href="/en/film961277.html"><img src="http://pics.filmaffinity.com/Zero_Dark_Thirty-961277-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film961277.html">Zero Dark Thirty</a>  (2012)   <img src="/imgs/countries/US.jpg" title="United States"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Kathryn+Bigelow">Kathryn Bigelow</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Jessica+Chastain">Jessica Chastain</a>, <a href="/en/search.php?stype=cast&amp;stext=Joel+Edgerton"> Joel Edgerton</a>, <a href="/en/search.php?stype=cast&amp;stext=Taylor+Kinney"> Taylor Kinney</a>, <a href="/en/search.php?stype=cast&amp;stext=Kyle+Chandler"> Kyle Chandler</a>, <a href="/en/search.php?stype=cast&amp;stext=Jennifer+Ehle"> Jennifer Ehle</a>, <a href="/en/search.php?stype=cast&amp;stext=Mark+Strong"> Mark Strong</a>, <a href="/en/search.php?stype=cast&amp;stext=Chris+Pratt"> Chris Pratt</a>, <a href="/en/search.php?stype=cast&amp;stext=Mark+Duplass"> Mark Duplass</a>, <a href="/en/search.php?stype=cast&amp;stext=Harold+Perrineau"> Harold Perrineau</a>, <a href="/en/search.php?stype=cast&amp;stext=Jason+Clarke"> Jason Clarke</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/961277.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">7</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/7_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Good</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="727340">
-    <div class="mc-poster">
-        <a href="/en/film727340.html"><img src="http://pics.filmaffinity.com/Zombie_Strippers-727340-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film727340.html">Zombie Strippers</a>  (2008)   <img src="/imgs/countries/US.jpg" title="United States"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Jay+Lee">Jay Lee</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Robert+Englund">Robert Englund</a>, <a href="/en/search.php?stype=cast&amp;stext=Jenna+Jameson"> Jenna Jameson</a>, <a href="/en/search.php?stype=cast&amp;stext=Roxy+Saint"> Roxy Saint</a>, <a href="/en/search.php?stype=cast&amp;stext=Shamron+Moore"> Shamron Moore</a>, <a href="/en/search.php?stype=cast&amp;stext=Joey+Medina"> Joey Medina</a>, <a href="/en/search.php?stype=cast&amp;stext=Penny+Drake"> Penny Drake</a>, <a href="/en/search.php?stype=cast&amp;stext=Jennifer+Holland"> Jennifer Holland</a>, <a href="/en/search.php?stype=cast&amp;stext=Jeannette+Sousa"> Jeannette Sousa</a>, <a href="/en/search.php?stype=cast&amp;stext=Whitney+Anderson"> Whitney Anderson</a>, <a href="/en/search.php?stype=cast&amp;stext=Raven+Lexy"> Raven Lexy</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/727340.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">4</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/4_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Regular</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="983609">
-    <div class="mc-poster">
-        <a href="/en/film983609.html"><img src="http://pics.filmaffinity.com/Zombieland-983609-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film983609.html">Zombieland</a>  (2009)   <img src="/imgs/countries/US.jpg" title="United States"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Ruben+Fleischer">Ruben Fleischer</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Jesse+Eisenberg">Jesse Eisenberg</a>, <a href="/en/search.php?stype=cast&amp;stext=Woody+Harrelson"> Woody Harrelson</a>, <a href="/en/search.php?stype=cast&amp;stext=Emma+Stone"> Emma Stone</a>, <a href="/en/search.php?stype=cast&amp;stext=Abigail+Breslin"> Abigail Breslin</a>, <a href="/en/search.php?stype=cast&amp;stext=Amber+Heard"> Amber Heard</a>, <a href="/en/search.php?stype=cast&amp;stext=Bill+Murray"> Bill Murray</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/983609.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">8</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/8_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Very good</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="871390">
-    <div class="mc-poster">
-        <a href="/en/film871390.html"><img src="http://pics.filmaffinity.com/Zoolander-871390-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film871390.html">Zoolander</a>  (2001)   <img src="/imgs/countries/US.jpg" title="United States"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Ben+Stiller">Ben Stiller</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Ben+Stiller">Ben Stiller</a>, <a href="/en/search.php?stype=cast&amp;stext=Owen+Wilson"> Owen Wilson</a>, <a href="/en/search.php?stype=cast&amp;stext=Milla+Jovovich"> Milla Jovovich</a>, <a href="/en/search.php?stype=cast&amp;stext=Will+Ferrell"> Will Ferrell</a>, <a href="/en/search.php?stype=cast&amp;stext=Christine+Taylor"> Christine Taylor</a>, <a href="/en/search.php?stype=cast&amp;stext=David+Duchovny"> David Duchovny</a>, <a href="/en/search.php?stype=cast&amp;stext=Jon+Voight"> Jon Voight</a>, <a href="/en/search.php?stype=cast&amp;stext=Winona+Ryder"> Winona Ryder</a>, <a href="/en/search.php?stype=cast&amp;stext=James+Marsden"> James Marsden</a>, <a href="/en/search.php?stype=cast&amp;stext=Heidi+Klum"> Heidi Klum</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/871390.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">7</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/7_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Good</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="575554">
-    <div class="mc-poster">
-        <a href="/en/film575554.html"><img src="http://pics.filmaffinity.com/REC-575554-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film575554.html">[*REC]</a>  (2007)   <img src="/imgs/countries/ES.jpg" title="Spain"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Jaume+Balaguer%F3">Jaume Balagueró</a>, <a href="/en/search.php?stype=director&amp;stext=Paco+Plaza"> Paco Plaza</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Manuela+Velasco">Manuela Velasco</a>, <a href="/en/search.php?stype=cast&amp;stext=Ferr%E1n+Terraza"> Ferrán Terraza</a>, <a href="/en/search.php?stype=cast&amp;stext=Jorge+Serrano"> Jorge Serrano</a>, <a href="/en/search.php?stype=cast&amp;stext=Pablo+Rosso"> Pablo Rosso</a>, <a href="/en/search.php?stype=cast&amp;stext=David+Vert"> David Vert</a>, <a href="/en/search.php?stype=cast&amp;stext=Vicente+Gil"> Vicente Gil</a>, <a href="/en/search.php?stype=cast&amp;stext=Martha+Carbonell"> Martha Carbonell</a>, <a href="/en/search.php?stype=cast&amp;stext=Carlos+Vicente"> Carlos Vicente</a>, <a href="/en/search.php?stype=cast&amp;stext=Mar%EDa+Teresa+Ortega"> María Teresa Ortega</a>, <a href="/en/search.php?stype=cast&amp;stext=Manuel+Bronchud"> Manuel Bronchud</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/575554.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">8</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/8_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Very good</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="739823">
-    <div class="mc-poster">
-        <a href="/en/film739823.html"><img src="http://pics.filmaffinity.com/REC_2-739823-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film739823.html">[*REC] 2</a>  (2009)   <img src="/imgs/countries/ES.jpg" title="Spain"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Jaume+Balaguer%F3">Jaume Balagueró</a>, <a href="/en/search.php?stype=director&amp;stext=Paco+Plaza"> Paco Plaza</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Manuela+Velasco">Manuela Velasco</a>, <a href="/en/search.php?stype=cast&amp;stext=%D3scar+Zafra"> Óscar Zafra</a>, <a href="/en/search.php?stype=cast&amp;stext=Juli+F%E0bregas"> Juli Fàbregas</a>, <a href="/en/search.php?stype=cast&amp;stext=Javier+Botet"> Javier Botet</a>, <a href="/en/search.php?stype=cast&amp;stext=Ferr%E1n+Terraza"> Ferrán Terraza</a>, <a href="/en/search.php?stype=cast&amp;stext=Jonathan+Mellor"> Jonathan Mellor</a>, <a href="/en/search.php?stype=cast&amp;stext=%C0lex+Batllori"> Àlex Batllori</a>, <a href="/en/search.php?stype=cast&amp;stext=Andrea+Ros"> Andrea Ros</a>, <a href="/en/search.php?stype=cast&amp;stext=Pablo+Rosso"> Pablo Rosso</a>, <a href="/en/search.php?stype=cast&amp;stext=Alejandro+Casaseca"> Alejandro Casaseca</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/739823.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">6</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/6_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Interesting</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="774169">
-    <div class="mc-poster">
-        <a href="/en/film774169.html"><img src="http://pics.filmaffinity.com/REC_Genesis-774169-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film774169.html">[*REC]³ Genesis</a>  (2012)   <img src="/imgs/countries/ES.jpg" title="Spain"></div>
-        <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Paco+Plaza">Paco Plaza</a></div>
-        <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Leticia+Dolera">Leticia Dolera</a>, <a href="/en/search.php?stype=cast&amp;stext=Diego+Mart%EDn"> Diego Martín</a>, <a href="/en/search.php?stype=cast&amp;stext=Mireia+Ros"> Mireia Ros</a>, <a href="/en/search.php?stype=cast&amp;stext=Ismael+Mart%EDnez"> Ismael Martínez</a>, <a href="/en/search.php?stype=cast&amp;stext=Emilio+Mencheta"> Emilio Mencheta</a>, <a href="/en/search.php?stype=cast&amp;stext=%C0lex+Monner"> Àlex Monner</a>, <a href="/en/search.php?stype=cast&amp;stext=Javier+Botet"> Javier Botet</a>, <a href="/en/search.php?stype=cast&amp;stext=Ana+Isabel+Vel%E1squez"> Ana Isabel Velásquez</a>, <a href="/en/search.php?stype=cast&amp;stext=Blai+Llopis"> Blai Llopis</a>, <a href="/en/search.php?stype=cast&amp;stext=Itziar+Castro"> Itziar Castro</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/774169.html">Share</a></span></div>
-    </div>
-
-    <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">5</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/5_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Decent</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="326341">
-    <div class="mc-poster">
-        <a href="/en/film326341.html"><img src="http://pics.filmaffinity.com/on_Flux-326341-small.jpg" border="0"></a>
-    </div>
-    <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film326341.html">Æon Flux</a>  (2005)   <img src="/imgs/countries/US.jpg" title="United States"></div>
+		<div class="mc-actions">
+		<div class="mc-action"><span title="Share" class="share-link"><a href="/en/user/rating/192076/326341.html"><i class="fa fa-share-alt"></i></a></span></div>	
+		</div>
+        <div class="mc-title"><a href="/en/film326341.html">Ã†on Flux</a>  (2005)   <img src="/imgs/countries/US.jpg" title="United States"></div>
         <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Karyn+Kusama">Karyn Kusama</a></div>
         <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Charlize+Theron">Charlize Theron</a>, <a href="/en/search.php?stype=cast&amp;stext=Frances+McDormand"> Frances McDormand</a>, <a href="/en/search.php?stype=cast&amp;stext=Marton+Csokas"> Marton Csokas</a>, <a href="/en/search.php?stype=cast&amp;stext=Jonny+Lee+Miller"> Jonny Lee Miller</a>, <a href="/en/search.php?stype=cast&amp;stext=Pete+Postlethwaite"> Pete Postlethwaite</a>, <a href="/en/search.php?stype=cast&amp;stext=Sophie+Okonedo"> Sophie Okonedo</a>, <a href="/en/search.php?stype=cast&amp;stext=Amelia+Warner"> Amelia Warner</a>, <a href="/en/search.php?stype=cast&amp;stext=Terry+Bartlett"> Terry Bartlett</a>, <a href="/en/search.php?stype=cast&amp;stext=Yangzom+Brauen"> Yangzom Brauen</a>, <a href="/en/search.php?stype=cast&amp;stext=Caroline+Chikezie"> Caroline Chikezie</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/326341.html">Share</a></span></div>
     </div>
 
     <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">6</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/6_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Interesting</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    </div>
-    </td></tr></table>
-<div><div class="pager"><a href="userratings.php?user_id=192076&amp;p=46&amp;orderby=2">&lt;&lt;</a> <a href="userratings.php?user_id=192076&amp;p=1&amp;orderby=2">1</a> <a href="userratings.php?user_id=192076&amp;p=20&amp;orderby=2">20</a> <a href="userratings.php?user_id=192076&amp;p=30&amp;orderby=2">30</a> <a href="userratings.php?user_id=192076&amp;p=40&amp;orderby=2">40</a> <a href="userratings.php?user_id=192076&amp;p=44&amp;orderby=2">44</a> <a href="userratings.php?user_id=192076&amp;p=45&amp;orderby=2">45</a> <a href="userratings.php?user_id=192076&amp;p=46&amp;orderby=2">46</a> <span class="current">47</span></div></div>
+</div>
+		</div>
+		<div class="user-ratings-movie-rating">
+			<div class="ur-mr-rat">6</div>
+			<div class="ur-mr-rat-img"><img src="/imgs/myratings/6_.png"></img></div>
+			<div class="ur-mr-rat-text">Interesting</div>
+		</div>
+	</div>
+</div>
+<div><div class="pager"><a href="/en/userratings.php?user_id=192076&amp;p=48&amp;orderby=2">&lt;&lt;</a> <a href="/en/userratings.php?user_id=192076&amp;p=1&amp;orderby=2">1</a> <a href="/en/userratings.php?user_id=192076&amp;p=20&amp;orderby=2">20</a> <a href="/en/userratings.php?user_id=192076&amp;p=30&amp;orderby=2">30</a> <a href="/en/userratings.php?user_id=192076&amp;p=40&amp;orderby=2">40</a> <a href="/en/userratings.php?user_id=192076&amp;p=46&amp;orderby=2">46</a> <a href="/en/userratings.php?user_id=192076&amp;p=47&amp;orderby=2">47</a> <a href="/en/userratings.php?user_id=192076&amp;p=48&amp;orderby=2">48</a> <span class="current">49</span></div></div>
 
 
-<table cellspacing="1" cellpadding="3" border="0" width="100%">
-    <tr>
-        <td id="bottom_anchor" align=left class="imthnav" style="width:100%; text-align:left; margin-top:4px">
+        <div id="bottom_anchor" class="go-up">
             <a href="#">Go to top of page</a>
-        </td>
-    </tr>
-</table>
+        </div>
 
         </div>
               </td>
@@ -961,4 +394,3 @@
 
 </body>
 </html>
-

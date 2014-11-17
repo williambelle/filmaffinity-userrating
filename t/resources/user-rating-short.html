@@ -1,26 +1,30 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Ratings by JohnSmith - FilmAffinity</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta charset="UTF-8">
 <meta name="description" content="Filmaffinity.com AKA movieaffinity.com is a website that finds people who have the same taste in movies as you, so you can consult their ratings for any movie you want to see on the Theater, TV, DVD">
 <meta property="og:site_name" content="FilmAffinity">
 <link href="/style/im.1351942287.css" rel="stylesheet" type="text/css">
-<link href="/style/share.1397644499.css" rel="stylesheet" type="text/css">
-<link href="/style/main3.1406704390.css" rel="stylesheet" type="text/css">
+<link href="/style/share.1415955022.css" rel="stylesheet" type="text/css">
+<link href="/style/movies-list.1415980207.css" rel="stylesheet" type="text/css">
+<link href="/style/main3.1415955649.css" rel="stylesheet" type="text/css">
 <link href="/style/history.1366804355.css" rel="stylesheet" type="text/css">
-<link href="/style/moviecards3.1366704004.css" rel="stylesheet" type="text/css">
-<link href="/style/jquery/fa-ui-theme/jquery-ui-1.10.3.custom.min.1389691996.css" rel="stylesheet" type="text/css">
+<link href="/style/moviecards3.1415953635.css" rel="stylesheet" type="text/css">
+<link href="/style/fa-awesome.1415364597.css" rel="stylesheet" type="text/css">
+<link href="/style/jquery/fa-ui-theme/jquery-ui.min.1414572832.css" rel="stylesheet" type="text/css">
+<link href="/style/jquery/fa-ui-theme/jquery-ui.structure.min.1414572832.css" rel="stylesheet" type="text/css">
+<link href="/style/jquery/fa-ui-theme/jquery-ui.theme.min.1414572833.css" rel="stylesheet" type="text/css">
 <link href="/style/friends.1351942286.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="/js/local_en.1351941950.js"></script>
+<script type="text/javascript" src="/js/local_en.1416237715.js"></script>
 <script type="text/javascript" src="/js/jquery/jquery-1.10.2.min.1389697507.js"></script>
 <script type="text/javascript" src="/js/jquery/jquery-migrate-1.2.1.1389692044.js"></script>
-<script type="text/javascript" src="/js/jquery/ui/jquery-ui-1.10.3.custom.min.1381152587.js"></script>
+<script type="text/javascript" src="/js/jquery/ui/jquery-ui-1.11.1.custom.min.1414572627.js"></script>
 <script type="text/javascript" src="/js/jquery/plugin/jquery.cookie.1351941968.js"></script>
-<script type="text/javascript" src="/js/jquery/plugin/info-cookies.1398769252.js"></script>
-<script type="text/javascript" src="/js/main.1400759396.js"></script>
+<script type="text/javascript" src="/js/jquery/plugin/info-cookies.1410251788.js"></script>
+<script type="text/javascript" src="/js/main.1416237721.js"></script>
 <script type="text/javascript" src="/js/z-index-fix.1392897259.js"></script>
-<script type="text/javascript" src="/js/fa-lists-tip.1395414240.js"></script>
+<script type="text/javascript" src="/js/fa-lists-tip.1415969626.js"></script>
 <script type="text/javascript" src="/js/jquery/plugin/mini-friends.1389777364.js"></script>
 <script type="text/javascript" src="/js/jquery/plugin/friends_translate_en.1405667811.js"></script>
 </head>
@@ -57,13 +61,15 @@
         <ul id="awardsmenu">
 
                 <li><a href="/en/main.html">Home</a></li><li class="sep">|</li>
-                <li><a href="/en/topgen.php?nodoc=1">TOP Filmaffinity</a></li><li class="sep">|</li>
-                <li><a href="/en/topcat.php?id=new_th_us">TOP Now Playing</a></li><li class="sep">|</li>
+                <li><a href="/en/cat_new_th_us.html">Now Playing</a></li><li class="sep">|</li>
+                <li><a href="/en/topgen.php?nodoc=1">TOP FA</a></li><li class="sep">|</li>
+                <li><a href="/en/topcat.php?id=new_th_us">TOP Now</a></li><li class="sep">|</li>
+                <li><a href="/en/boxoffice.php">Box Office</a></li><li class="sep">|</li>
                 <li><a href="/en/imlost.php">Tutorial</a></li><li class="sep">|</li>
                 <li><a href="/en/tours.php">Start Voting!</a></li><li class="sep">|</li>
-                <li><a href="/en/awards.php?award_id=emmy&amp;year=2014">Emmy Awards 2014 (nominees)</a></li><li class="sep">|</li>
                 <li><a href="/en/best_2013.php">Best of 2013</a></li><li class="sep">|</li>
-                <li><a href="/en/awards.php?award_id=academy_awards&amp;year=2014">Academy Awards</a></li>
+                <li><a href="/en/awards.php?award_id=european&year=2014">European Film Awards (n.)</a></li><li class="sep">|</li>
+                <li><a href="/en/oscar_data.php">Oscars</a></li>
 
         </ul>
 
@@ -80,15 +86,28 @@
 
 
             <div id="top-ad" style="min-height: 90px;">
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <ins class="adsbygoogle"
-                     style="display:inline-block;width:970px;height:90px"
-                     data-ad-client="ca-pub-9828150778409198"
-                     data-ad-slot="1850063228"></ins>
-                <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                <div class="alignleft">
+                    <script type='text/javascript'>
+                     amzn_assoc_ad_type = 'banner';
+                     amzn_assoc_tracking_id = 'filmaffinity-20';
+                     amzn_assoc_marketplace = 'amazon';
+                     amzn_assoc_region = 'US';
+                     amzn_assoc_placement = 'assoc_banner_placement_default';
+                     amzn_assoc_linkid = '5YRQ2SU57JZX5VWX';
+                     amzn_assoc_campaigns = 'videogames';
+                     amzn_assoc_p = '48';
+                     amzn_assoc_banner_type = 'category';
+                     amzn_assoc_isresponsive = 'false';
+                     amzn_assoc_banner_id = '03XX10Q1NZN7VPMSY702';
+                     amzn_assoc_width = '728';
+                     amzn_assoc_height = '90';
+                    </script>
+                    <script src='//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1'></script>
+                </div>
+
             </div>
+
+
 </div>
 
 <div id="info-cookie">
@@ -132,11 +151,7 @@
       </td>
       <td>
         <div id="mt-content-cell">
-<h1 id="main-title">Ratings by JohnSmith</h1><style>
-
-</style>
-<br>
-    <div id="templates" style="display:none">
+<h1 id="main-title">Ratings by JohnSmith</h1>    <div id="templates" style="display:none">
 
         <div id="add-friend-dialog" title="Add Friend">
             <div class="form-dialog">
@@ -256,7 +271,7 @@
     <div id="stats">
         <dl>
             <dt id="avg_votes" style="color:#990000;">6.4</dt><dd style="font-size:13px;"><strong>Average Rating</strong></dd>
-            <dt>1401</dt><dd><a href="/en/userratings.php?user_id=192076">Rated Movies</a></dd>
+            <dt>1441</dt><dd><a href="/en/userratings.php?user_id=192076">Rated Movies</a></dd>
 
                         <dt>4</dt><dd><a href="/en/userlists.php?user_id=192076">Lists</a></dd>
                     </dl>
@@ -287,12 +302,11 @@
     </ul>
   </div>
 </div>
-<table width="100%" border="0" cellpadding="3" cellspacing="1">
-    <tr>
-        <td align="left">Page <b>37</b> of <b>47</b></td>
+<div class="user-ratings-info-top">
+	<div class="float-left">
+		Page <b>39</b> of <b>49</b>	</div>
         <form method="get" >
         <input type="hidden" name="user_id" value="192076" />
-        <td colspan="2" align="right">
             <b>List by</b>
                 <select name="orderby" onchange="this.form.submit()">
                     <option value="0" >Rating</option>
@@ -305,177 +319,147 @@
                     <option value="5" >Country + Rating</option>
                     <option value="6" >Country + Year</option>
                 </select>
-        </td>
         </form>
-    </tr>
-    <tr>
-        <td id="upper_anchor" class="imthnav" style="text-align:left; width:33%; margin-top:4px" align="left" width:100%;>
+</div>
+
+        <div id="upper_anchor" class="go-down">
             <a href="#bottom_anchor">Go to bottom of page</a>
-        </td>
-    </tr>
-    <tr>
-        <td id=top_pager colspan="2" align="center"><div class="pager"><div class="pager"><a href="userratings.php?user_id=192076&amp;p=36&amp;orderby=4">&lt;&lt;</a> <a href="userratings.php?user_id=192076&amp;p=1&amp;orderby=4">1</a> <a href="userratings.php?user_id=192076&amp;p=10&amp;orderby=4">10</a> <a href="userratings.php?user_id=192076&amp;p=20&amp;orderby=4">20</a> <a href="userratings.php?user_id=192076&amp;p=30&amp;orderby=4">30</a> <a href="userratings.php?user_id=192076&amp;p=34&amp;orderby=4">34</a> <a href="userratings.php?user_id=192076&amp;p=35&amp;orderby=4">35</a> <a href="userratings.php?user_id=192076&amp;p=36&amp;orderby=4">36</a> <span class="current">37</span> <a href="userratings.php?user_id=192076&amp;p=38&amp;orderby=4">38</a> <a href="userratings.php?user_id=192076&amp;p=39&amp;orderby=4">39</a> <a href="userratings.php?user_id=192076&amp;p=40&amp;orderby=4">40</a> <a href="userratings.php?user_id=192076&amp;p=47&amp;orderby=4">47</a> <a href="userratings.php?user_id=192076&amp;p=38&amp;orderby=4">&gt;&gt;</a></div></div></td>
-    </tr>
-</table>
+        </div>
+<div class="pager"><div class="pager"><a href="/en/userratings.php?user_id=192076&amp;p=38&amp;orderby=4">&lt;&lt;</a> <a href="/en/userratings.php?user_id=192076&amp;p=1&amp;orderby=4">1</a> <a href="/en/userratings.php?user_id=192076&amp;p=10&amp;orderby=4">10</a> <a href="/en/userratings.php?user_id=192076&amp;p=20&amp;orderby=4">20</a> <a href="/en/userratings.php?user_id=192076&amp;p=30&amp;orderby=4">30</a> <a href="/en/userratings.php?user_id=192076&amp;p=36&amp;orderby=4">36</a> <a href="/en/userratings.php?user_id=192076&amp;p=37&amp;orderby=4">37</a> <a href="/en/userratings.php?user_id=192076&amp;p=38&amp;orderby=4">38</a> <span class="current">39</span> <a href="/en/userratings.php?user_id=192076&amp;p=40&amp;orderby=4">40</a> <a href="/en/userratings.php?user_id=192076&amp;p=41&amp;orderby=4">41</a> <a href="/en/userratings.php?user_id=192076&amp;p=42&amp;orderby=4">42</a> <a href="/en/userratings.php?user_id=192076&amp;p=49&amp;orderby=4">49</a> <a href="/en/userratings.php?user_id=192076&amp;p=40&amp;orderby=4">&gt;&gt;</a></div></div>
 
-
-
-<table class="amovies_table_cont" style="width:100%"><tr><td>
-
-<div id="amovies_cont">
-
-        <div style="padding: 2px 4px; background: #eee; font-weight: bold; color:#555; font-size:11px;text-align:left; border-color: #aaa #ddd #ddd #aaa; border-style:solid; border-width: 1px">Rated on July 27, 2011</div>
-
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="201496">
+        
+<div  >
+	
+		<div class="user-ratings-wrapper">
+			<div class="user-ratings-header">Rated on July 27, 2011</div>
+	<div class="user-ratings-movie fa-shadow">
+		<div class="user-ratings-movie-item">
+                <div class="movie-card movie-card-0" data-movie-id="201496">
     <div class="mc-poster">
-        <a href="/en/film201496.html"><img src="http://pics.filmaffinity.com/Iron_Man-201496-small.jpg" border="0"></a>
+        <a href="/en/film201496.html"><img src="http://pics.filmaffinity.com/Iron_Man-201496-medium.jpg" border="0"></a>
     </div>
     <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film201496.html">Iron Man</a>  (2008)   <img src="/imgs/countries/US.jpg" title="United States"></div>
+		<div class="mc-actions">
+		<div class="mc-action"><span title="Share" class="share-link"><a href="/en/user/rating/192076/201496.html"><i class="fa fa-share-alt"></i></a></span></div>	
+		</div>
+        <div class="mc-title"><a href="/en/film201496.html">Iron Man</a>  (2008)   <img src="/imgs/countries/US.jpg" title="United States"></div>
         <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Jon+Favreau">Jon Favreau</a></div>
         <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Robert+Downey+Jr.">Robert Downey Jr.</a>, <a href="/en/search.php?stype=cast&amp;stext=Terrence+Howard"> Terrence Howard</a>, <a href="/en/search.php?stype=cast&amp;stext=Gwyneth+Paltrow"> Gwyneth Paltrow</a>, <a href="/en/search.php?stype=cast&amp;stext=Jeff+Bridges"> Jeff Bridges</a>, <a href="/en/search.php?stype=cast&amp;stext=Stan+Lee"> Stan Lee</a>, <a href="/en/search.php?stype=cast&amp;stext=Leslie+Bibb"> Leslie Bibb</a>, <a href="/en/search.php?stype=cast&amp;stext=Clark+Gregg"> Clark Gregg</a>, <a href="/en/search.php?stype=cast&amp;stext=Shaun+Toub"> Shaun Toub</a>, <a href="/en/search.php?stype=cast&amp;stext=Faran+Tahir"> Faran Tahir</a>, <a href="/en/search.php?stype=cast&amp;stext=Samuel+L.+Jackson"> Samuel L. Jackson</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/201496.html">Share</a></span></div>
     </div>
 
     <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">8</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/8_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Very good</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-<div id="amovies_cont">
-
-        <div style="padding: 2px 4px; background: #eee; font-weight: bold; color:#555; font-size:11px;text-align:left; border-color: #aaa #ddd #ddd #aaa; border-style:solid; border-width: 1px">Rated on July 11, 2011</div>
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="516117">
+</div>
+		</div>
+		<div class="user-ratings-movie-rating">
+			<div class="ur-mr-rat">8</div>
+			<div class="ur-mr-rat-img"><img src="/imgs/myratings/8_.png"></img></div>
+			<div class="ur-mr-rat-text">Very good</div>
+		</div>
+	</div>
+</div>		<div class="user-ratings-wrapper">
+			<div class="user-ratings-header">Rated on July 11, 2011</div>
+	<div class="user-ratings-movie fa-shadow">
+		<div class="user-ratings-movie-item">
+                <div class="movie-card movie-card-0" data-movie-id="516117">
     <div class="mc-poster">
-        <a href="/en/film516117.html"><img src="http://pics.filmaffinity.com/The_Invasion-516117-small.jpg" border="0"></a>
+        <a href="/en/film516117.html"><img src="http://pics.filmaffinity.com/The_Invasion-516117-medium.jpg" border="0"></a>
     </div>
     <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film516117.html">The Invasion</a>  (2007)   <img src="/imgs/countries/US.jpg" title="United States"></div>
+		<div class="mc-actions">
+		<div class="mc-action"><span title="Share" class="share-link"><a href="/en/user/rating/192076/516117.html"><i class="fa fa-share-alt"></i></a></span></div>	
+		</div>
+        <div class="mc-title"><a href="/en/film516117.html">The Invasion</a>  (2007)   <img src="/imgs/countries/US.jpg" title="United States"></div>
         <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Oliver+Hirschbiegel">Oliver Hirschbiegel</a></div>
         <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Nicole+Kidman">Nicole Kidman</a>, <a href="/en/search.php?stype=cast&amp;stext=Daniel+Craig"> Daniel Craig</a>, <a href="/en/search.php?stype=cast&amp;stext=Jeremy+Northam"> Jeremy Northam</a>, <a href="/en/search.php?stype=cast&amp;stext=Jackson+Bond"> Jackson Bond</a>, <a href="/en/search.php?stype=cast&amp;stext=Jeffrey+Wright"> Jeffrey Wright</a>, <a href="/en/search.php?stype=cast&amp;stext=Veronica+Cartwright"> Veronica Cartwright</a>, <a href="/en/search.php?stype=cast&amp;stext=Malin+Akerman"> Malin Akerman</a>, <a href="/en/search.php?stype=cast&amp;stext=Jeff+Wincott"> Jeff Wincott</a>, <a href="/en/search.php?stype=cast&amp;stext=Susan+Floyd"> Susan Floyd</a>, <a href="/en/search.php?stype=cast&amp;stext=Alexis+Raben"> Alexis Raben</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/516117.html">Share</a></span></div>
     </div>
 
     <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">6</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/6_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Interesting</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="551026">
+</div>
+		</div>
+		<div class="user-ratings-movie-rating">
+			<div class="ur-mr-rat">6</div>
+			<div class="ur-mr-rat-img"><img src="/imgs/myratings/6_.png"></img></div>
+			<div class="ur-mr-rat-text">Interesting</div>
+		</div>
+	</div>
+	<div class="user-ratings-movie fa-shadow">
+		<div class="user-ratings-movie-item">
+                <div class="movie-card movie-card-0" data-movie-id="551026">
     <div class="mc-poster">
-        <a href="/en/film551026.html"><img src="http://pics.filmaffinity.com/The_Astronaut_s_Wife-551026-small.jpg" border="0"></a>
+        <a href="/en/film551026.html"><img src="http://pics.filmaffinity.com/The_Astronaut_s_Wife-551026-medium.jpg" border="0"></a>
     </div>
     <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film551026.html">The Astronaut's Wife</a>  (1999)   <img src="/imgs/countries/US.jpg" title="United States"></div>
+		<div class="mc-actions">
+		<div class="mc-action"><span title="Share" class="share-link"><a href="/en/user/rating/192076/551026.html"><i class="fa fa-share-alt"></i></a></span></div>	
+		</div>
+        <div class="mc-title"><a href="/en/film551026.html">The Astronaut's Wife</a>  (1999)   <img src="/imgs/countries/US.jpg" title="United States"></div>
         <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Rand+Ravich">Rand Ravich</a></div>
         <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Johnny+Depp">Johnny Depp</a>, <a href="/en/search.php?stype=cast&amp;stext=Charlize+Theron"> Charlize Theron</a>, <a href="/en/search.php?stype=cast&amp;stext=Joe+Morton"> Joe Morton</a>, <a href="/en/search.php?stype=cast&amp;stext=Clea+DuVall"> Clea DuVall</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/551026.html">Share</a></span></div>
     </div>
 
     <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">5</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/5_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Decent</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="170262">
+</div>
+		</div>
+		<div class="user-ratings-movie-rating">
+			<div class="ur-mr-rat">5</div>
+			<div class="ur-mr-rat-img"><img src="/imgs/myratings/5_.png"></img></div>
+			<div class="ur-mr-rat-text">Decent</div>
+		</div>
+	</div>
+	<div class="user-ratings-movie fa-shadow">
+		<div class="user-ratings-movie-item">
+                <div class="movie-card movie-card-0" data-movie-id="170262">
     <div class="mc-poster">
-        <a href="/en/film170262.html"><img src="http://pics.filmaffinity.com/Untraceable-170262-small.jpg" border="0"></a>
+        <a href="/en/film170262.html"><img src="http://pics.filmaffinity.com/Untraceable-170262-medium.jpg" border="0"></a>
     </div>
     <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film170262.html">Untraceable</a>  (2008)   <img src="/imgs/countries/US.jpg" title="United States"></div>
+		<div class="mc-actions">
+		<div class="mc-action"><span title="Share" class="share-link"><a href="/en/user/rating/192076/170262.html"><i class="fa fa-share-alt"></i></a></span></div>	
+		</div>
+        <div class="mc-title"><a href="/en/film170262.html">Untraceable</a>  (2008)   <img src="/imgs/countries/US.jpg" title="United States"></div>
         <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Gregory+Hoblit">Gregory Hoblit</a></div>
         <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Diane+Lane">Diane Lane</a>, <a href="/en/search.php?stype=cast&amp;stext=Colin+Hanks"> Colin Hanks</a>, <a href="/en/search.php?stype=cast&amp;stext=Billy+Burke"> Billy Burke</a>, <a href="/en/search.php?stype=cast&amp;stext=Joseph+Cross"> Joseph Cross</a>, <a href="/en/search.php?stype=cast&amp;stext=Mary+Beth+Hurt"> Mary Beth Hurt</a>, <a href="/en/search.php?stype=cast&amp;stext=Peter+Lewis"> Peter Lewis</a>, <a href="/en/search.php?stype=cast&amp;stext=Tyrone+Giordano"> Tyrone Giordano</a>, <a href="/en/search.php?stype=cast&amp;stext=Perla+Haney-Jardine"> Perla Haney-Jardine</a>, <a href="/en/search.php?stype=cast&amp;stext=Tim+De+Zarn"> Tim De Zarn</a>, <a href="/en/search.php?stype=cast&amp;stext=Daniel+Liu"> Daniel Liu</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/170262.html">Share</a></span></div>
     </div>
 
     <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">7</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/7_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Good</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    <table width="100%" class="amovie_info" style="margin: 4px 0 8px; ">
-        <tr>
-            <td style="padding-right: 8px;">
-                <div class="movie-card movie-card-7" data-movie-id="966177">
+</div>
+		</div>
+		<div class="user-ratings-movie-rating">
+			<div class="ur-mr-rat">7</div>
+			<div class="ur-mr-rat-img"><img src="/imgs/myratings/7_.png"></img></div>
+			<div class="ur-mr-rat-text">Good</div>
+		</div>
+	</div>
+	<div class="user-ratings-movie fa-shadow">
+		<div class="user-ratings-movie-item">
+                <div class="movie-card movie-card-0" data-movie-id="966177">
     <div class="mc-poster">
-        <a href="/en/film966177.html"><img src="http://pics.filmaffinity.com/Into_the_Wild-966177-small.jpg" border="0"></a>
+        <a href="/en/film966177.html"><img src="http://pics.filmaffinity.com/Into_the_Wild-966177-medium.jpg" border="0"></a>
     </div>
     <div class="mc-info-container">
-                <div class="mc-title"><a href="/en/film966177.html">Into the Wild</a>  (2007)   <img src="/imgs/countries/US.jpg" title="United States"></div>
+		<div class="mc-actions">
+		<div class="mc-action"><span title="Share" class="share-link"><a href="/en/user/rating/192076/966177.html"><i class="fa fa-share-alt"></i></a></span></div>	
+		</div>
+        <div class="mc-title"><a href="/en/film966177.html">Into the Wild</a>  (2007)   <img src="/imgs/countries/US.jpg" title="United States"></div>
         <div class="mc-director"><a href="/en/search.php?stype=director&amp;stext=Sean+Penn">Sean Penn</a></div>
         <div class="mc-cast"><a href="/en/search.php?stype=cast&amp;stext=Emile+Hirsch">Emile Hirsch</a>, <a href="/en/search.php?stype=cast&amp;stext=Marcia+Gay+Harden"> Marcia Gay Harden</a>, <a href="/en/search.php?stype=cast&amp;stext=William+Hurt"> William Hurt</a>, <a href="/en/search.php?stype=cast&amp;stext=Jena+Malone"> Jena Malone</a>, <a href="/en/search.php?stype=cast&amp;stext=Brian+Dierker"> Brian Dierker</a>, <a href="/en/search.php?stype=cast&amp;stext=Vince+Vaughn"> Vince Vaughn</a>, <a href="/en/search.php?stype=cast&amp;stext=Kristen+Stewart"> Kristen Stewart</a>, <a href="/en/search.php?stype=cast&amp;stext=Catherine+Keener"> Catherine Keener</a>, <a href="/en/search.php?stype=cast&amp;stext=Hal+Holbrook"> Hal Holbrook</a>, <a href="/en/search.php?stype=cast&amp;stext=Thure+Lindhardt"> Thure Lindhardt</a></div>
-        <div><span class="share-link"><a href="/en/sharerating/192076/966177.html">Share</a></span></div>
     </div>
 
     <div class="lists-box"></div>
-</div>            </td>
-            <td style="vertical-align:top; text-align: right; width: 120px">
-                <div style="border:1px solid #ddd; width: 120px; text-align:center;">
-                    <div style="color:#666666;font-size:28px;font-weight:bold;">9</div>
-                    <div style="padding: 1px;"><img src="/imgs/myratings/9_.png"></img></div>
-                    <div style="padding: 2px; color:#666666;font-size:14px;">Great</div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <div style="border-top: 1px solid #eee;"></div>
-
-    
-    </div>
-    </td></tr></table>
-<div><div class="pager"><a href="userratings.php?user_id=192076&amp;p=36&amp;orderby=4">&lt;&lt;</a> <a href="userratings.php?user_id=192076&amp;p=1&amp;orderby=4">1</a> <a href="userratings.php?user_id=192076&amp;p=10&amp;orderby=4">10</a> <a href="userratings.php?user_id=192076&amp;p=20&amp;orderby=4">20</a> <a href="userratings.php?user_id=192076&amp;p=30&amp;orderby=4">30</a> <a href="userratings.php?user_id=192076&amp;p=34&amp;orderby=4">34</a> <a href="userratings.php?user_id=192076&amp;p=35&amp;orderby=4">35</a> <a href="userratings.php?user_id=192076&amp;p=36&amp;orderby=4">36</a> <span class="current">37</span> <a href="userratings.php?user_id=192076&amp;p=38&amp;orderby=4">38</a> <a href="userratings.php?user_id=192076&amp;p=39&amp;orderby=4">39</a> <a href="userratings.php?user_id=192076&amp;p=40&amp;orderby=4">40</a> <a href="userratings.php?user_id=192076&amp;p=47&amp;orderby=4">47</a> <a href="userratings.php?user_id=192076&amp;p=38&amp;orderby=4">&gt;&gt;</a></div></div>
+</div></div>
+		<div class="user-ratings-movie-rating">
+			<div class="ur-mr-rat">9</div>
+			<div class="ur-mr-rat-img"><img src="/imgs/myratings/9_.png"></img></div>
+			<div class="ur-mr-rat-text">Great</div>
+		</div>
+	</div>
+</div>
+<div><div class="pager"><a href="/en/userratings.php?user_id=192076&amp;p=38&amp;orderby=4">&lt;&lt;</a> <a href="/en/userratings.php?user_id=192076&amp;p=1&amp;orderby=4">1</a> <a href="/en/userratings.php?user_id=192076&amp;p=10&amp;orderby=4">10</a> <a href="/en/userratings.php?user_id=192076&amp;p=20&amp;orderby=4">20</a> <a href="/en/userratings.php?user_id=192076&amp;p=30&amp;orderby=4">30</a> <a href="/en/userratings.php?user_id=192076&amp;p=36&amp;orderby=4">36</a> <a href="/en/userratings.php?user_id=192076&amp;p=37&amp;orderby=4">37</a> <a href="/en/userratings.php?user_id=192076&amp;p=38&amp;orderby=4">38</a> <span class="current">39</span> <a href="/en/userratings.php?user_id=192076&amp;p=40&amp;orderby=4">40</a> <a href="/en/userratings.php?user_id=192076&amp;p=41&amp;orderby=4">41</a> <a href="/en/userratings.php?user_id=192076&amp;p=42&amp;orderby=4">42</a> <a href="/en/userratings.php?user_id=192076&amp;p=49&amp;orderby=4">49</a> <a href="/en/userratings.php?user_id=192076&amp;p=40&amp;orderby=4">&gt;&gt;</a></div></div>
 
 
-<table cellspacing="1" cellpadding="3" border="0" width="100%">
-    <tr>
-        <td id="bottom_anchor" align=left class="imthnav" style="width:100%; text-align:left; margin-top:4px">
+        <div id="bottom_anchor" class="go-up">
             <a href="#">Go to top of page</a>
-        </td>
-    </tr>
-</table>
+        </div>
 
         </div>
               </td>
