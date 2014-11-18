@@ -1,5 +1,7 @@
-FilmAffinity-UserRating [![Build Status](https://travis-ci.org/williambelle/filmaffinity-userrating.svg?branch=master)](https://travis-ci.org/williambelle/filmaffinity-userrating) 
+FilmAffinity-UserRating 
 =======================
+
+[![Build Status](https://travis-ci.org/williambelle/filmaffinity-userrating.svg?branch=master)](https://travis-ci.org/williambelle/filmaffinity-userrating) [![Coverage Status](https://coveralls.io/repos/williambelle/filmaffinity-userrating/badge.png?branch=master)](https://coveralls.io/r/williambelle/filmaffinity-userrating?branch=master)
 
 Perl interface to FilmAffinity
 
