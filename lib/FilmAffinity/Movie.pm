@@ -122,6 +122,10 @@ get url of the cover
 
 get site rating
 
+=head2 $movie->myrating
+
+get personal rating
+
 =head2 $movie->votes
 
 get number of votes
@@ -175,6 +179,7 @@ has country  => ( is => 'rw', isa => 'Str', );
 has cover    => ( is => 'rw', isa => 'Str', );
 has rating   => ( is => 'rw', isa => 'Num', );
 has votes    => ( is => 'rw', isa => 'Num', );
+has myrating => ( is => 'rw', isa => 'Num', );
 
 has genre => ( is => 'rw', isa => 'ArrayRef[Str]', );
 has topic => ( is => 'rw', isa => 'ArrayRef[Str]', );
@@ -212,7 +217,7 @@ my $XPATH_COVER   = '//div[@id="movie-main-image-container"]/a/img/@src';
 my @JSON_FIELD = qw(
   id title year synopsis website duration cast director composer screenwriter
   cinematographer genre topic studio producer country cover rating votes
-  originaltitle
+  originaltitle myrating
 );
 
 my $FIELD = [

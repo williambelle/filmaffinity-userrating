@@ -113,6 +113,7 @@ foreach my $id ( @listOfMovieToRetrieve ){
     delay => $delay || 5,
   );
   $movie->parse();
+  $movie->myrating($ref_movies->{$id}->{rating});
 
   my $json = $movie->toJSON();
   $json > io($destination.'/json/'.$id.'.json'); 
