@@ -9,7 +9,7 @@ sub mockLocalSite {
   
   my $tmpDir = tempdir(CLEANUP => 1);
   dircopy($localdir, $tmpDir);
-  "file://$tmpDir";
+  return "file:///$tmpDir";
 }
 
 1;
