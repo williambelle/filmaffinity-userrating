@@ -31,5 +31,11 @@ Revision history for FilmAffinity-UserRating
         bug-fix: films with empty rating
         bug-fix: films with empty vote
 
-0.08    13 Nov 2013 / 20h10
+0.08    13 Nov 2014 / 20h10
         Update dependencies
+
+0.09	22 Nov 2014 / 15h45
+        Rewrite XPath expression because of the new layout of filmaffinity
+        Improve unit test
+        add myrating accessor
+        bug-fix: unit test failures on Windows
