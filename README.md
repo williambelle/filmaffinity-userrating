@@ -1,7 +1,8 @@
-FilmAffinity-UserRating 
+FilmAffinity-UserRating
 =======================
 
-[![Build Status](https://travis-ci.org/williambelle/filmaffinity-userrating.svg?branch=master)](https://travis-ci.org/williambelle/filmaffinity-userrating) [![Coverage Status](https://coveralls.io/repos/williambelle/filmaffinity-userrating/badge.png?branch=master)](https://coveralls.io/r/williambelle/filmaffinity-userrating?branch=master)
+[![Build Status](https://travis-ci.org/williambelle/filmaffinity-userrating.svg?branch=master)](https://travis-ci.org/williambelle/filmaffinity-userrating)
+[![Coverage Status](https://coveralls.io/repos/williambelle/filmaffinity-userrating/badge.svg?branch=master&service=github)](https://coveralls.io/github/williambelle/filmaffinity-userrating?branch=master)
 
 Perl interface to FilmAffinity
 
@@ -27,11 +28,11 @@ $movie->parse();
 
 my $title = $movie->title;
 ```
-    
+
 Via the command-line program
 
     filmaffinity-get-rating.pl --userid=123456
-    
+
     filmaffinity-get-movie-info.pl --id=348488
 
 Installation
@@ -39,10 +40,12 @@ Installation
 
 To install this module, run the following commands:
 
-	perl Build.PL
-	./Build
-	./Build test
-	./Build install
+```bash
+perl Build.PL
+./Build
+./Build test
+./Build install
+```
 
 Support and documentation
 -------------------------
@@ -50,9 +53,11 @@ Support and documentation
 After installing, you can find documentation for this module with the
 perldoc command.
 
-    perldoc FilmAffinity::UserRating
-    perldoc FilmAffinity::Utils
-    perldoc FilmAffinity::Movie
+```bash
+perldoc FilmAffinity::UserRating
+perldoc FilmAffinity::Utils
+perldoc FilmAffinity::Movie
+```
 
 You can also look for information at:
 
@@ -69,7 +74,7 @@ You can also look for information at:
   http://search.cpan.org/dist/FilmAffinity-UserRating/
 
 
-Licence and Copyright
+License and Copyright
 ---------------------
 
 Copyright (C) 2013 William Belle
@@ -79,5 +84,3 @@ under the terms of either: the GNU General Public License as published
 by the Free Software Foundation; or the Artistic License.
 
 See http://dev.perl.org/licenses/ for more information.
-
-
