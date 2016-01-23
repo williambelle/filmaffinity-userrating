@@ -30,6 +30,11 @@ my $builder = Module::Build->new(
 		'Readonly'                 => 2.00,
 		'File::Copy::Recursive'    => 0.38,
 	},
+	meta_merge => {
+			resources => {
+					repository => 'https://github.com/healthonnet/hon-ec2-snapshots-monitoring',
+			},
+	},
 	add_to_cleanup     => ['FilmAffinity-UserRating-*'],
 	create_makefile_pl => 'traditional',
 );
