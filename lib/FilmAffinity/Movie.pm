@@ -39,7 +39,7 @@ Retrieve information about a filmaffinity movie
       id    => $movieID,
       delay => $delay || 5,
     );
-    
+
     $movie->parse();
 
 Via the command-line program filmaffinity-get-movie-info.pl
@@ -355,7 +355,7 @@ sub parsePage {
   $self->p_findVotes();
   $self->country( $self->tree->findvalue( $XPATH_COUNTRY ) );
   $self->cover( $self->tree->findvalue( $XPATH_COVER ) );
-  $self->title( $self->tree->findvalue( $XPATH_TITLE ) );
+  $self->title( trim($self->tree->findvalue( $XPATH_TITLE )) );
 
   $self->tree->delete();
   return;
