@@ -8,6 +8,7 @@ use Pod::Usage;
 
 use IO::All -utf8;
 use List::Compare;
+use IO::Interactive qw/is_interactive/;
 use FilmAffinity::Movie;
 use FilmAffinity::Utils qw/data2tsv/;
 use FilmAffinity::UserRating;
@@ -19,9 +20,9 @@ get information from filmaffinity about a film and all ratings from a user
 =head1 SYNOPSIS
 
   ./filmaffinity-get-all-info.pl --userid=123456 --destination=path/to/my/folder
-  
+
   ./filmaffinity-get-all-info.pl --userid=123456 --destination=path/to/my/folder --delay=2
-  
+
   ./filmaffinity-get-all-info.pl --userid=123456 --destination=path/to/my/folder --force
 
 =head1 ARGUMENTS
@@ -62,7 +63,7 @@ GetOptions(
   "destination=s" => \$destination,
   "force"         => \$force,
   "help"          => \$help,
-) 
+)
 || pod2usage(2);
 
 if ( $help || !$userID || !$destination ) {
@@ -72,7 +73,7 @@ if ( $help || !$userID || !$destination ) {
 
 &setFileSystem( $destination );
 
-my $userParser = FilmAffinity::UserRating->new( 
+my $userParser = FilmAffinity::UserRating->new(
   userID => $userID,
   delay  => $delay || 5,
 );
@@ -84,20 +85,20 @@ my @listOfRemoteMovieId = keys %{$ref_movies};
 my @listOfLocalMovieId  = &getListOfLocalMovieId( $destination );
 
 my $listCompare = List::Compare->new(
-  \@listOfLocalMovieId, 
+  \@listOfLocalMovieId,
   \@listOfRemoteMovieId,
 );
 
 my @listOfMovieToRetrieve = $force ? @listOfRemoteMovieId : $listCompare->get_Ronly();
 
 my $progress;
-if ( -t STDOUT ) {
+if ( is_interactive() ) {
   eval {
     require Term::ProgressBar;
-    $progress = Term::ProgressBar->new({ 
-      name   => 'jsonize movie information', 
-      count  => scalar @listOfMovieToRetrieve, 
-      remove => 1 
+    $progress = Term::ProgressBar->new({
+      name   => 'jsonize movie information',
+      count  => scalar @listOfMovieToRetrieve,
+      remove => 1
     });
   };
   if ($@) {
@@ -107,8 +108,8 @@ if ( -t STDOUT ) {
 
 my $count = 0;
 foreach my $id ( @listOfMovieToRetrieve ){
-  
-  my $movie = FilmAffinity::Movie->new( 
+
+  my $movie = FilmAffinity::Movie->new(
     id    => $id,
     delay => $delay || 5,
   );
@@ -116,17 +117,17 @@ foreach my $id ( @listOfMovieToRetrieve ){
   $movie->myrating($ref_movies->{$id}->{rating});
 
   my $json = $movie->toJSON();
-  $json > io($destination.'/json/'.$id.'.json'); 
-  
+  $json > io($destination.'/json/'.$id.'.json');
+
   $count++;
-  $progress->update($count) if $progress;    
+  $progress->update($count) if $progress;
 }
 
 
 sub setFileSystem {
   my ( $destination ) = shift;
   mkdir $destination;
-  mkdir $destination.'/json';  
+  mkdir $destination.'/json';
 }
 
 sub getListOfLocalMovieId {
@@ -137,9 +138,9 @@ sub getListOfLocalMovieId {
   foreach my $file (@content){
     my $filename = $file->filename;
     $filename =~ s/\.json//;
-    push @listOfLocalMovie, $filename; 
+    push @listOfLocalMovie, $filename;
   }
-  return @listOfLocalMovie;  
+  return @listOfLocalMovie;
 }
 
 =head1 AUTHOR
