@@ -33,7 +33,7 @@ my $builder = Module::Build->new(
   meta_merge => {
     resources => {
       repository =>
-        'https://github.com/healthonnet/hon-ec2-snapshots-monitoring',
+        'https://github.com/williambelle/filmaffinity-userrating',
     },
   },
   add_to_cleanup     => ['FilmAffinity-UserRating-*'],
