@@ -29,7 +29,7 @@ my $builder = Module::Build->new(
     'List::Compare'            => 0.39,
     'Readonly'                 => 2.00,
     'File::Copy::Recursive'    => 0.38,
-    'IO::Interactive'          => 0.0.6,
+    'IO::Interactive'          => '0.0.6',
   },
   meta_merge => {
     resources => {

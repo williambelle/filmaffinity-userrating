@@ -1,5 +1,6 @@
 .includepath
 .perlcriticrc
+.perltidyrc
 .project
 .travis.yml
 bin/filmaffinity-get-all-info.pl
@@ -12,7 +13,6 @@ lib/FilmAffinity/UserRating.pm
 lib/FilmAffinity/Utils.pm
 MANIFEST			This list of files
 MANIFEST.SKIP
-MANIFEST.SKIP.bak
 README
 README.md
 t/00-load.t
