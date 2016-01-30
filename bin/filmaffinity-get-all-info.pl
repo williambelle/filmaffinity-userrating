@@ -6,6 +6,9 @@ use warnings;
 use Getopt::Long;
 use Pod::Usage;
 
+use Carp;
+use English qw/-no_match_vars/;
+use Readonly;
 use IO::All -utf8;
 use List::Compare;
 use IO::Interactive qw/is_interactive/;
@@ -13,11 +16,19 @@ use FilmAffinity::Movie;
 use FilmAffinity::Utils qw/data2tsv/;
 use FilmAffinity::UserRating;
 
-=head1 NAME - filmaffinity-get-all-info.pl
+=head1 NAME
 
-get information from filmaffinity about a film and all ratings from a user
+filmaffinity-get-all-info.pl
 
-=head1 SYNOPSIS
+=head1 DESCRIPTION
+
+Get information from filmaffinity about a film and all ratings from a user
+
+=head1 VERSION
+
+Version 0.09
+
+=head1 USAGE
 
   ./filmaffinity-get-all-info.pl --userid=123456 --destination=path/to/my/folder
 
@@ -25,7 +36,7 @@ get information from filmaffinity about a film and all ratings from a user
 
   ./filmaffinity-get-all-info.pl --userid=123456 --destination=path/to/my/folder --force
 
-=head1 ARGUMENTS
+=head1 REQUIRED ARGUMENTS
 
 =over 2
 
@@ -55,89 +66,89 @@ force to retrieve all movies
 
 =cut
 
+our $VERSION = '0.09';
+
 my ( $userID, $delay, $destination, $force, $help );
 
 GetOptions(
-  "userid=i"      => \$userID,
-  "delay=i"       => \$delay,
-  "destination=s" => \$destination,
-  "force"         => \$force,
-  "help"          => \$help,
-)
-|| pod2usage(2);
+  'userid=i'      => \$userID,
+  'delay=i'       => \$delay,
+  'destination=s' => \$destination,
+  'force'         => \$force,
+  'help'          => \$help,
+) || pod2usage(2);
 
 if ( $help || !$userID || !$destination ) {
   pod2usage(1);
-  exit(0);
+  exit 0;
 }
 
-&setFileSystem( $destination );
+setFileSystem();
 
 my $userParser = FilmAffinity::UserRating->new(
   userID => $userID,
-  delay  => $delay || 5,
+  delay  => $delay || $DELAY,
 );
 my $ref_movies = $userParser->parse();
-my $tsv = data2tsv( $ref_movies );
-$tsv > io($destination.'/ratings.list');
+my $tsv        = data2tsv($ref_movies);
+$tsv > io( $destination . '/ratings.list' );
 
 my @listOfRemoteMovieId = keys %{$ref_movies};
-my @listOfLocalMovieId  = &getListOfLocalMovieId( $destination );
+my @listOfLocalMovieId  = getListOfLocalMovieId();
 
-my $listCompare = List::Compare->new(
-  \@listOfLocalMovieId,
-  \@listOfRemoteMovieId,
-);
+my $listCompare =
+  List::Compare->new( \@listOfLocalMovieId, \@listOfRemoteMovieId, );
 
-my @listOfMovieToRetrieve = $force ? @listOfRemoteMovieId : $listCompare->get_Ronly();
+my @listOfMovieToRetrieve =
+  $force ? @listOfRemoteMovieId : $listCompare->get_Ronly();
 
 my $progress;
 if ( is_interactive() ) {
-  eval {
+  my $value = eval {
     require Term::ProgressBar;
-    $progress = Term::ProgressBar->new({
-      name   => 'jsonize movie information',
-      count  => scalar @listOfMovieToRetrieve,
-      remove => 1
-    });
+    $progress = Term::ProgressBar->new(
+      {
+        name   => 'jsonize movie information',
+        count  => scalar @listOfMovieToRetrieve,
+        remove => 1
+      }
+    );
   };
-  if ($@) {
-    warn "Could not create progress bar. We can continue, but no progress will be reported";
+  if ($EVAL_ERROR) {
+    carp
+'Could not create progress bar. We can continue, but no progress will be reported';
   }
 }
 
 my $count = 0;
-foreach my $id ( @listOfMovieToRetrieve ){
+foreach my $id (@listOfMovieToRetrieve) {
 
   my $movie = FilmAffinity::Movie->new(
     id    => $id,
-    delay => $delay || 5,
+    delay => $delay || $DELAY,
   );
   $movie->parse();
-  $movie->myrating($ref_movies->{$id}->{rating});
+  $movie->myrating( $ref_movies->{$id}->{rating} );
 
   my $json = $movie->toJSON();
-  $json > io($destination.'/json/'.$id.'.json');
+  $json > io( $destination . '/json/' . $id . '.json' );
 
   $count++;
   $progress->update($count) if $progress;
 }
 
-
 sub setFileSystem {
-  my ( $destination ) = shift;
   mkdir $destination;
-  mkdir $destination.'/json';
+  mkdir $destination . '/json';
+  return;
 }
 
 sub getListOfLocalMovieId {
-  my ( $destination ) = shift;
-
   my @listOfLocalMovie = ();
-  my @content = io($destination.'/json')->all();
-  foreach my $file (@content){
+  my @content          = io( $destination . '/json' )->all();
+  foreach my $file (@content) {
     my $filename = $file->filename;
-    $filename =~ s/\.json//;
+    $filename =~ s/[.]json//xms;
     push @listOfLocalMovie, $filename;
   }
   return @listOfLocalMovie;
@@ -146,6 +157,40 @@ sub getListOfLocalMovieId {
 =head1 AUTHOR
 
 William Belle, C<< <william.belle at gmail.com> >>
+
+=head1 BUGS AND LIMITATIONS
+
+Please report any bugs or feature requests to C<bug-filmaffinity-userrating at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=FilmAffinity-UserRating>.  I will be notified, and then you'll
+automatically be notified of progress on your bug as I make changes.
+
+=head1 SUPPORT
+
+You can find documentation for this module with the perldoc command.
+
+    perldoc filmaffinity-get-all-info.pl
+
+You can also look for information at:
+
+=over 4
+
+=item * RT: CPAN's request tracker (report bugs here)
+
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=FilmAffinity-UserRating>
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/FilmAffinity-UserRating>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/FilmAffinity-UserRating>
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/FilmAffinity-UserRating/>
+
+=back
 
 =head1 SEE ALSO
 
