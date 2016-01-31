@@ -34,8 +34,12 @@ Revision history for FilmAffinity-UserRating
 0.08    13 Nov 2014 / 20h10
         Update dependencies
 
-0.09	22 Nov 2014 / 15h45
+0.09    22 Nov 2014 / 15h45
         Rewrite XPath expression because of the new layout of filmaffinity
         Improve unit test
         add myrating accessor
         bug-fix: unit test failures on Windows
+
+0.10    31 Nov 2016 / 11h20
+        Improve pod documentation
+        Clean code

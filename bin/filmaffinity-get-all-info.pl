@@ -26,7 +26,7 @@ Get information from filmaffinity about a film and all ratings from a user
 
 =head1 VERSION
 
-Version 0.09
+Version 0.10
 
 =head1 USAGE
 
@@ -66,7 +66,7 @@ force to retrieve all movies
 
 =cut
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 my ( $userID, $delay, $destination, $force, $help );
 

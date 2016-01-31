@@ -12,11 +12,11 @@ FilmAffinity::Utils - Utils for FilmAffinity
 
 =head1 VERSION
 
-Version 0.09
+Version 0.10
 
 =cut
 
-our $VERSION = 0.09;
+our $VERSION = 0.10;
 
 =head1 SYNOPSIS
 
@@ -25,7 +25,7 @@ our $VERSION = 0.09;
   my $string = demoronize($string);
   my $ua = buildRobot($delay);
   my $tsv = data2tsv($data);
-  
+
 =head1 DESCRIPTION
 
 Several utilities functions

@@ -21,7 +21,7 @@ Get ratings from filmaffinity for a user and print them in Tab-separated values
 
 =head1 VERSION
 
-Version 0.09
+Version 0.10
 
 =head1 USAGE
 
@@ -57,7 +57,7 @@ output file
 
 =cut
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 Readonly my $DELAY => 5;
 
