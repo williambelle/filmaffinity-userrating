@@ -68,6 +68,8 @@ force to retrieve all movies
 
 our $VERSION = '0.10';
 
+Readonly my $DELAY => 5;
+
 my ( $userID, $delay, $destination, $force, $help );
 
 GetOptions(
