@@ -7,6 +7,7 @@ bin/filmaffinity-get-all-info.pl
 bin/filmaffinity-get-movie-info.pl
 bin/filmaffinity-get-ratings.pl
 Changes
+CONTRIBUTING.md
 ignore.txt
 lib/FilmAffinity/Movie.pm
 lib/FilmAffinity/UserRating.pm
