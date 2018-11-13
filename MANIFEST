@@ -14,7 +14,6 @@ lib/FilmAffinity/UserRating.pm
 lib/FilmAffinity/Utils.pm
 MANIFEST			This list of files
 MANIFEST.SKIP
-README
 README.md
 t/00-load.t
 t/01-parser-user.t
