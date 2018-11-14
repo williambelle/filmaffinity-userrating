@@ -30,11 +30,11 @@ Version 0.10
 
 =head1 USAGE
 
-  ./filmaffinity-get-all-info.pl --userid=123456 --destination=path/to/my/folder
+  filmaffinity-get-all-info.pl --userid=123456 --destination=path/to/my/folder
 
-  ./filmaffinity-get-all-info.pl --userid=123456 --destination=path/to/my/folder --delay=2
+  filmaffinity-get-all-info.pl --userid=123456 --destination=path/to/my/folder --delay=2
 
-  ./filmaffinity-get-all-info.pl --userid=123456 --destination=path/to/my/folder --force
+  filmaffinity-get-all-info.pl --userid=123456 --destination=path/to/my/folder --force
 
 =head1 REQUIRED ARGUMENTS
 

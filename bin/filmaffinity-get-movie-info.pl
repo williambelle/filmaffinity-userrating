@@ -24,11 +24,11 @@ Version 0.10
 
 =head1 USAGE
 
-  ./filmaffinity-get-movie-info.pl --id=123456
+  filmaffinity-get-movie-info.pl --id=123456
 
-  ./filmaffinity-get-movie-info.pl --id=123456 --delay=2
+  filmaffinity-get-movie-info.pl --id=123456 --delay=2
 
-  ./filmaffinity-get-movie-info.pl --id=932476 --output=/home/william/matrix.json
+  filmaffinity-get-movie-info.pl --id=932476 --output=/home/william/matrix.json
 
 =head1 REQUIRED ARGUMENTS
 

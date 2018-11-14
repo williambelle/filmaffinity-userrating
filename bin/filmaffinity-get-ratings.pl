@@ -25,11 +25,11 @@ Version 0.10
 
 =head1 USAGE
 
-  ./filmaffinity-get-rating.pl --userid=123456
+  filmaffinity-get-rating.pl --userid=123456
 
-  ./filmaffinity-get-rating.pl --userid=123456 --delay=2
+  filmaffinity-get-rating.pl --userid=123456 --delay=2
 
-  ./filmaffinity-get-rating.pl --userid=123456 --output=/home/william/myvote.list
+  filmaffinity-get-rating.pl --userid=123456 --output=/home/william/myvote.list
 
 =head1 REQUIRED ARGUMENTS
 
