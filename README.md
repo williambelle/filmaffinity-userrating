@@ -19,7 +19,7 @@ cpan install FilmAffinity::UserRating
 Usage
 -----
 
-### Command Line
+### Command Line
 
 ##### `filmaffinity-get-ratings.pl`
 
