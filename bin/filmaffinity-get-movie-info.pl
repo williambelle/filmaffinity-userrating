@@ -20,7 +20,7 @@ Get information from filmaffinity about a film and print them in JSON format
 
 =head1 VERSION
 
-Version 0.10
+Version 1.00
 
 =head1 USAGE
 
@@ -56,7 +56,7 @@ output json file
 
 =cut
 
-our $VERSION = '0.10';
+our $VERSION = '1.00';
 
 Readonly my $DELAY => 5;
 

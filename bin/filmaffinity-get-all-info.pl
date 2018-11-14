@@ -26,7 +26,7 @@ Get information from filmaffinity about a film and all ratings from a user
 
 =head1 VERSION
 
-Version 0.10
+Version 1.00
 
 =head1 USAGE
 
@@ -66,7 +66,7 @@ force to retrieve all movies
 
 =cut
 
-our $VERSION = '0.10';
+our $VERSION = '1.00';
 
 Readonly my $DELAY => 5;
 
