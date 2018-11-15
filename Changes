@@ -1,6 +1,9 @@
 Revision history for FilmAffinity-UserRating
 
-1.00    11 Nov 2018 / 21h00
+1.01    15 Nov 2018 / 19h00
+        Fix tarball
+
+1.00    14 Nov 2018 / 21h00
         Fix delay initialization
         Fix usage example
         Improve README.md
